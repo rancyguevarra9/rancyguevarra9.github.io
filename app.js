@@ -6,7 +6,10 @@ document.querySelector('.available').innerHTML = '<i></i> Open to internship and
 document.querySelector('.contact h2').textContent = 'Looking for a developer who cares about the details?';
 const linkedInUrl = 'https://www.linkedin.com/in/rancy-guevarra-51681538a';
 const campusDemoLink = document.querySelector('.campus .project-button');
-if (campusDemoLink) campusDemoLink.href = 'https://rancy-guevarra-portfolio.upbeatbread2.chatgpt.site/campus-companion/index.html';
+if (campusDemoLink) {
+  campusDemoLink.href = 'campus-companion.html';
+  campusDemoLink.textContent = 'Open live demo ↗';
+}
 const linkedInNav = document.createElement('a');
 linkedInNav.href = linkedInUrl; linkedInNav.target = '_blank'; linkedInNav.rel = 'noreferrer'; linkedInNav.textContent = 'LinkedIn ↗';
 document.querySelector('.nav nav').append(linkedInNav);

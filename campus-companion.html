@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campus Companion</title>
+    <link rel="stylesheet" href="campus-styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#"><span class="brand-mark">✦</span><span>Campus<br />Companion</span></a>
+        <nav aria-label="Main navigation">
+          <button class="nav-link active" data-view="home"><span>⌂</span>Home</button>
+          <button class="nav-link" data-view="schedule"><span>▣</span>Schedule</button>
+          <button class="nav-link" data-view="assignments"><span>▤</span>Assignments</button>
+          <button class="nav-link" data-view="study"><span>◫</span>Study</button>
+          <button class="nav-link" data-view="notes"><span>▱</span>Notes</button>
+        </nav>
+        <div class="sidebar-footer"><span class="avatar small">RG</span><div><b>Rancy Guevarra</b><small>BSIT Student</small></div></div>
+      </aside>
+
+      <main>
+        <header class="topbar">
+          <div><p id="page-kicker" class="eyebrow">TUESDAY, 15 OCTOBER</p><h1 id="page-title">Good morning, Rancy <span>☀</span></h1><p id="page-subtitle" class="muted">Here is your plan for a productive day.</p></div>
+          <div class="top-actions"><label class="search-box" for="dashboard-search">⌕<input id="dashboard-search" placeholder="Search classes, tasks…" /></label><button id="edit-mode" class="edit-button">✎ Customize</button><button id="theme-toggle" class="icon-button" aria-label="Toggle theme">◐</button><button id="notifications" class="notification" aria-label="Notifications"><svg class="notification-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4" /></svg><i></i></button><button id="profile-button" class="avatar" aria-label="Profile menu">RG</button></div>
+        </header>
+
+        <section id="view-home" class="view active">
+        <section class="quick-stats" aria-label="Today's overview">
+          <article><span class="stat-icon blue">▣</span><div><b id="classes-today">3</b><p>Classes today</p></div></article>
+          <article><span class="stat-icon coral">✓</span><div><b id="task-total">4</b><p>Tasks left</p></div></article>
+          <article><span class="stat-icon mint">◷</span><div><b id="study-total">18h</b><p>Study time</p></div></article>
+          <article><span class="stat-icon violet">↗</span><div><b id="weekly-stat">72%</b><p>Weekly goal</p></div></article>
+        </section>
+
+        <div class="dashboard-grid">
+          <section class="panel schedule-panel">
+            <div class="panel-heading"><div><p class="eyebrow">SCHEDULE</p><h2>Your day at a glance</h2></div><button class="text-button">Full schedule →</button></div>
+            <div class="next-class"><span class="live-dot"></span><b>Next class:</b> Database Systems starts in <strong>32 minutes</strong><button>View details</button></div>
+            <div class="timeline">
+              <div class="time"><span>08:00</span><i></i></div><article class="class-card blue-card"><span>08:30 — 10:00</span><b>Human Computer Interaction</b><p>Room 405 · Prof. Santos</p></article>
+              <div class="time"><span>10:00</span><i></i></div><article class="class-card mint-card"><span>10:30 — 12:00</span><b>Database Systems</b><p>Lab 2 · Prof. Cruz</p></article>
+              <div class="time"><span>13:00</span><i></i></div><article class="class-card coral-card"><span>13:30 — 15:00</span><b>Web Development</b><p>Room 302 · Prof. Reyes</p></article>
+              <div class="time"><span>15:00</span><i></i></div>
+            </div>
+          </section>
+
+          <section class="panel deadline-panel"><div class="panel-heading"><div><p class="eyebrow">COMING UP</p><h2>Deadlines</h2></div><button class="text-button">See all →</button></div>
+            <article class="deadline"><span class="deadline-icon coral">▤</span><div><b>UX Research Report</b><p>Human Computer Interaction</p></div><strong>Tomorrow</strong></article>
+            <article class="deadline"><span class="deadline-icon mint">⌘</span><div><b>Portfolio wireframe</b><p>Web Development</p></div><strong>Oct 18</strong></article>
+            <article class="deadline"><span class="deadline-icon violet">▣</span><div><b>Database homework 4</b><p>Database Systems</p></div><strong>Oct 21</strong></article>
+          </section>
+
+          <section class="panel tasks-panel"><div class="panel-heading"><div><p class="eyebrow">FOCUS LIST</p><h2>My tasks</h2></div><button id="add-task" class="add-button">+ Add task</button></div>
+            <ul id="task-list" class="tasks">
+              <li><input type="checkbox" id="t1" /><label for="t1">Read Chapter 6: Database Systems</label><span class="tag today">Today</span><div class="task-actions"><button class="task-action done">✓ Done</button><button class="task-action archive">Archive</button><button class="task-action remove" aria-label="Remove task">×</button></div></li>
+              <li><input type="checkbox" id="t2" /><label for="t2">Work on portfolio project</label><span class="tag warm">Oct 16</span><div class="task-actions"><button class="task-action done">✓ Done</button><button class="task-action archive">Archive</button><button class="task-action remove" aria-label="Remove task">×</button></div></li>
+              <li><input type="checkbox" id="t3" /><label for="t3">Prepare HCI midterm notes</label><span class="tag blue-tag">Oct 17</span><div class="task-actions"><button class="task-action done">✓ Done</button><button class="task-action archive">Archive</button><button class="task-action remove" aria-label="Remove task">×</button></div></li>
+              <li><input type="checkbox" id="t4" /><label for="t4">Review lecture slides</label><span class="tag neutral">Oct 18</span><div class="task-actions"><button class="task-action done">✓ Done</button><button class="task-action archive">Archive</button><button class="task-action remove" aria-label="Remove task">×</button></div></li>
+            </ul>
+            <button id="archived-tasks" class="archived-button">⌑ Archived tasks <span>0</span></button>
+          </section>
+
+          <section class="panel goal-panel"><div class="panel-heading"><div><p class="eyebrow">THIS WEEK</p><h2>Study goal</h2></div><button class="text-button">Edit goal</button></div>
+            <div class="goal-content"><div class="progress-ring"><div><b id="goal-percent">72%</b><span>18 / 25 hrs</span></div></div><div class="goal-copy"><h3>25 hours of focused study</h3><p>You are <b>7 hours</b> away from your weekly goal.</p><button id="log-study" class="secondary-button">+ Log 30 minutes</button></div></div>
+          </section>
+
+          <section class="panel events-panel"><div class="panel-heading"><div><p class="eyebrow">AROUND CAMPUS</p><h2>Events</h2></div><button class="text-button">View all →</button></div>
+            <div id="event-list">
+              <article class="event"><time><b>15</b><span>OCT</span></time><div><b>Career Fair 2026</b><p>10:00 AM – 4:00 PM · Student Union</p></div><div class="event-actions"><button class="event-action done">✓ Done</button><button class="event-action archive">Archive</button><button class="event-action remove" aria-label="Remove event">×</button></div></article>
+              <article class="event"><time class="purple"><b>17</b><span>OCT</span></time><div><b>Wellness Wednesday</b><p>12:00 PM · Recreation Centre</p></div><div class="event-actions"><button class="event-action done">✓ Done</button><button class="event-action archive">Archive</button><button class="event-action remove" aria-label="Remove event">×</button></div></article>
+            </div>
+            <button id="archived-events" class="archived-button">⌑ Archived events <span>0</span></button>
+          </section>
+        </div>
+        </section>
+        <section id="view-schedule" class="view page-view">
+          <div class="page-intro schedule-intro"><p>Choose a day to view your classes, then add or complete sessions as you go.</p><button id="add-class" class="add-button">+ Add class</button></div>
+          <div class="week-tabs" role="tablist" aria-label="Schedule days"><button class="day-tab" data-day="Monday">Mon</button><button class="day-tab active" data-day="Tuesday">Tue</button><button class="day-tab" data-day="Wednesday">Wed</button><button class="day-tab" data-day="Thursday">Thu</button><button class="day-tab" data-day="Friday">Fri</button><button class="day-tab" data-day="Saturday">Sat</button></div>
+          <div class="page-grid two-col"><article class="panel schedule-card"><div class="schedule-card-head"><div><p id="schedule-day-label" class="eyebrow">TUESDAY</p><h3 id="schedule-summary">Three classes planned</h3></div><span class="tag blue-tag">Weekly plan</span></div><div id="schedule-list"><div class="day-schedule" data-day="Monday"><div class="agenda-item"><time>09:00</time><div><b>Programming Fundamentals</b><p>Room 204 · Review loops and functions</p></div><label class="schedule-check"><input type="checkbox" /> Done</label></div><div class="agenda-item"><time>13:00</time><div><b>Physical Education</b><p>Gymnasium · Bring water bottle</p></div><label class="schedule-check"><input type="checkbox" /> Done</label></div></div><div class="day-schedule active" data-day="Tuesday"><div class="agenda-item is-finished"><time>08:30</time><div><b>Human Computer Interaction</b><p>Room 405 · Bring wireframe notes</p></div><label class="schedule-check"><input type="checkbox" checked /> Done</label></div><div class="agenda-item"><time>10:30</time><div><b>Database Systems</b><p>Lab 2 · Review Chapter 6</p></div><label class="schedule-check"><input type="checkbox" /> Done</label></div><div class="agenda-item"><time>13:30</time><div><b>Web Development</b><p>Room 302 · Prepare portfolio draft</p></div><label class="schedule-check"><input type="checkbox" /> Done</label></div></div><div class="day-schedule" data-day="Wednesday"><div class="agenda-item"><time>10:00</time><div><b>Data Communications</b><p>Room 308 · Read the network handout</p></div><label class="schedule-check"><input type="checkbox" /> Done</label></div><div class="agenda-item"><time>14:00</time><div><b>Human Computer Interaction</b><p>Room 405 · Improve prototype screens</p></div><label class="schedule-check"><input type="checkbox" /> Done</label></div></div><div class="day-schedule" data-day="Thursday"><div class="agenda-item"><time>09:30</time><div><b>Database Systems</b><p>Lab 2 · Work on SQL queries</p></div><label class="schedule-check"><input type="checkbox" /> Done</label></div><div class="agenda-item"><time>13:30</time><div><b>Web Development</b><p>Room 302 · Build portfolio section</p></div><label class="schedule-check"><input type="checkbox" /> Done</label></div></div><div class="day-schedule" data-day="Friday"><div class="agenda-item"><time>08:30</time><div><b>Programming Fundamentals</b><p>Room 204 · Complete practice activity</p></div><label class="schedule-check"><input type="checkbox" /> Done</label></div></div><div class="day-schedule" data-day="Saturday"><div class="empty-schedule"><span>☀</span><b>Open study day</b><p>Add a review session, project work, or rest time.</p></div></div></div></article><article class="panel prep-card"><p class="eyebrow">PREPARE FOR NEXT</p><span class="prep-icon">◫</span><h2>Database Systems</h2><p class="page-copy">Before class, review your database notes and complete the Chapter 6 reading task.</p><button class="secondary-button" data-demo-action="Study reminder set">Set reminder</button></article></div>
+        </section>
+        <section id="view-assignments" class="view page-view">
+          <div class="page-intro"><div><p class="eyebrow">WORK TO FINISH</p><h2>Assignments</h2><p>Keep deadlines visible and break each task into a simple next step.</p></div><button id="add-assignment" class="add-button">+ Add assignment</button></div>
+          <div id="assignment-list" class="assignment-list"><article class="panel assignment-card"><span class="tag warm">Due tomorrow</span><h3>UX Research Report</h3><p>Human Computer Interaction</p><div class="assignment-footer"><span>Next: write the findings section</span></div><div class="card-actions"><button class="card-action done">✓ Done</button><button class="card-action archive">Archive</button><button class="card-action remove" aria-label="Remove assignment">×</button></div></article><article class="panel assignment-card"><span class="tag blue-tag">Due Oct 18</span><h3>Portfolio wireframe</h3><p>Web Development</p><div class="assignment-footer"><span>Next: revise project card layout</span></div><div class="card-actions"><button class="card-action done">✓ Done</button><button class="card-action archive">Archive</button><button class="card-action remove" aria-label="Remove assignment">×</button></div></article><article class="panel assignment-card"><span class="tag neutral">Due Oct 21</span><h3>Database homework 4</h3><p>Database Systems</p><div class="assignment-footer"><span>Next: answer questions 1–5</span></div><div class="card-actions"><button class="card-action done">✓ Done</button><button class="card-action archive">Archive</button><button class="card-action remove" aria-label="Remove assignment">×</button></div></article></div><button class="archived-button archived-work">⌑ Archived work <span>0</span></button>
+        </section>
+        <section id="view-study" class="view page-view">
+          <div class="page-intro"><div><p class="eyebrow">FOCUS PLAN</p><h2>What to study next</h2><p>A short study plan based on your upcoming classes and deadlines.</p></div><div class="page-actions"><button id="focus-timer" class="secondary-button">▶ Start 25 min focus</button><button id="add-study" class="add-button">+ Add study</button></div></div>
+          <div id="study-list" class="study-plan"><article class="panel study-card"><span class="study-number">01</span><div><p class="study-meta">DATABASE SYSTEMS · 45 MIN</p><h3>Chapter 6 and homework</h3><p>Read Chapter 6, then answer the homework questions.</p></div><div class="study-actions"><label class="study-check"><input type="checkbox" /> Done</label><button class="study-action archive">Archive</button><button class="study-action remove" aria-label="Remove study session">×</button></div></article><article class="panel study-card"><span class="study-number">02</span><div><p class="study-meta">HCI · 30 MIN</p><h3>Research report findings</h3><p>Turn your observations into findings for tomorrow’s report.</p></div><div class="study-actions"><label class="study-check"><input type="checkbox" /> Done</label><button class="study-action archive">Archive</button><button class="study-action remove" aria-label="Remove study session">×</button></div></article><article class="panel study-card"><span class="study-number">03</span><div><p class="study-meta">WEB DEVELOPMENT · 30 MIN</p><h3>Portfolio improvements</h3><p>Improve one portfolio section and test it on mobile.</p></div><div class="study-actions"><label class="study-check"><input type="checkbox" /> Done</label><button class="study-action archive">Archive</button><button class="study-action remove" aria-label="Remove study session">×</button></div></article></div><button id="archived-study" class="archived-button">⌑ Archived study sessions <span>0</span></button>
+        </section>
+        <section id="view-notes" class="view page-view">
+          <div class="page-intro"><div><p class="eyebrow">QUICK NOTES</p><h2>Notes to finish</h2><p>Keep short reminders and make the next action obvious.</p></div><button id="add-note" class="add-button">+ New note</button></div>
+          <div id="notes-list" class="notes-grid"><article class="panel note-card blue-note"><span>DATABASE SYSTEMS</span><h3>Chapter 6 review</h3><p>Finish the normalization examples before the next lab.</p><div class="card-actions"><button class="card-action done">✓ Done</button><button class="card-action archive">Archive</button><button class="card-action remove" aria-label="Remove note">×</button></div></article><article class="panel note-card mint-note"><span>HCI</span><h3>Research report</h3><p>Add three user quotes and improve the findings section.</p><div class="card-actions"><button class="card-action done">✓ Done</button><button class="card-action archive">Archive</button><button class="card-action remove" aria-label="Remove note">×</button></div></article><article class="panel note-card coral-note"><span>WEB DEVELOPMENT</span><h3>Portfolio improvements</h3><p>Capture updated screenshots for SourceSnap and Campus Companion.</p><div class="card-actions"><button class="card-action done">✓ Done</button><button class="card-action archive">Archive</button><button class="card-action remove" aria-label="Remove note">×</button></div></article></div><button class="archived-button archived-work">⌑ Archived work <span>0</span></button>
+        </section>
+      </main>
+    </div>
+    <dialog id="task-dialog"><form method="dialog"><button class="dialog-close" aria-label="Close">×</button><p class="eyebrow">NEW TASK</p><h2>Add a task</h2><label>Task name<input id="new-task" placeholder="e.g. Finish interface wireframe" required /></label><label>Due date<input type="date" /></label><button id="save-task" class="primary-button" value="default">Add to focus list</button></form></dialog>
+    <dialog id="goal-dialog"><form method="dialog"><button class="dialog-close" aria-label="Close">×</button><p class="eyebrow">STUDY GOAL</p><h2>Update your goal</h2><label>Weekly target (hours)<input id="goal-hours" type="number" min="1" max="100" value="25" required /></label><label>Hours completed<input id="completed-hours" type="number" min="0" max="100" value="18" required /></label><button id="save-goal" class="primary-button" value="default">Save study goal</button></form></dialog>
+    <dialog id="info-dialog"><form method="dialog"><button class="dialog-close" aria-label="Close">×</button><p id="info-kicker" class="eyebrow">DETAILS</p><h2 id="info-title">Details</h2><p id="info-content" class="dialog-copy"></p><button class="primary-button" value="default">Got it</button></form></dialog>
+    <dialog id="archive-dialog"><form method="dialog"><button class="dialog-close" aria-label="Close">×</button><p class="eyebrow">TASK HISTORY</p><h2>Archived tasks</h2><ul id="archive-list" class="archive-list"></ul><p id="empty-archive" class="dialog-copy">No archived tasks yet.</p></form></dialog>
+    <dialog id="event-archive-dialog"><form method="dialog"><button class="dialog-close" aria-label="Close">×</button><p class="eyebrow">EVENT HISTORY</p><h2>Archived events</h2><ul id="event-archive-list" class="archive-list"></ul><p id="empty-event-archive" class="dialog-copy">No archived events yet.</p></form></dialog>
+    <dialog id="class-dialog"><form method="dialog"><button class="dialog-close" aria-label="Close">×</button><p class="eyebrow">NEW CLASS</p><h2>Add a class</h2><label>Day<select id="class-day"><option>Monday</option><option selected>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option></select></label><label>Class name<input id="class-name" placeholder="e.g. Networking" required /></label><label>Time<input id="class-time" type="time" required /></label><label>Room or preparation note<input id="class-note" placeholder="e.g. Room 101" /></label><button id="save-class" class="primary-button" value="default">Add to schedule</button></form></dialog>
+    <dialog id="assignment-dialog"><form method="dialog"><button class="dialog-close" aria-label="Close">×</button><p class="eyebrow">NEW ASSIGNMENT</p><h2>Add an assignment</h2><label>Assignment name<input id="assignment-name" placeholder="e.g. Case study" required /></label><label>Subject<input id="assignment-subject" placeholder="e.g. Web Development" required /></label><label>Next step<input id="assignment-step" placeholder="e.g. Draft the introduction" required /></label><button id="save-assignment" class="primary-button" value="default">Add assignment</button></form></dialog>
+    <dialog id="note-dialog"><form method="dialog"><button class="dialog-close" aria-label="Close">×</button><p class="eyebrow">NEW NOTE</p><h2>Add a note</h2><label>Subject<input id="note-subject" placeholder="e.g. Database Systems" required /></label><label>Title<input id="note-title" placeholder="e.g. Chapter 7 review" required /></label><label>Reminder<input id="note-body" placeholder="What should you finish?" required /></label><button id="save-note" class="primary-button" value="default">Save note</button></form></dialog>
+    <dialog id="study-dialog"><form method="dialog"><button class="dialog-close" aria-label="Close">×</button><p class="eyebrow">STUDY SESSION</p><h2>Add study session</h2><label>Subject<input id="study-subject" placeholder="e.g. Database Systems" required /></label><label>What will you study?<input id="study-title" placeholder="e.g. Chapter 7 review" required /></label><label>Minutes<input id="study-minutes" type="number" min="5" max="240" value="30" required /></label><label>Small goal<input id="study-goal" placeholder="e.g. Answer questions 1–5" required /></label><button id="save-study" class="primary-button" value="default">Add study session</button></form></dialog>
+    <dialog id="study-archive-dialog"><form method="dialog"><button class="dialog-close" aria-label="Close">×</button><p class="eyebrow">STUDY HISTORY</p><h2>Archived study sessions</h2><ul id="study-archive-list" class="archive-list"></ul><p id="empty-study-archive" class="dialog-copy">No archived study sessions yet.</p></form></dialog>
+    <dialog id="work-archive-dialog"><form method="dialog"><button class="dialog-close" aria-label="Close">×</button><p class="eyebrow">WORK HISTORY</p><h2>Archived work</h2><ul id="work-archive-list" class="archive-list"></ul><p id="empty-work-archive" class="dialog-copy">No archived assignments or notes yet.</p></form></dialog>
+    <div id="notification-menu" class="floating-menu" hidden><b>Notifications</b><p>UX Research Report is due tomorrow.</p><p>Your Database Systems class begins in 32 minutes.</p></div>
+    <div id="profile-menu" class="floating-menu profile-menu" hidden><b>Rancy Guevarra</b><p>BSIT Student</p><button id="reset-dashboard">Reset my edits</button></div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="campus-app.js"></script>
+  </body>
+</html>
