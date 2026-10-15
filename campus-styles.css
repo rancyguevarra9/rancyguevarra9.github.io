@@ -57,3 +57,5 @@ body.dark{--paper:#101827;--panel:#18243a;--ink:#edf3ff;--muted:#b4c1d5;--line:#
   .portfolio-return{grid-area:back;justify-self:end;width:auto}
 }
 @media(max-width:390px){.sidebar{padding:10px 12px 11px}.brand{font-size:12px}.portfolio-return{font-size:9px!important;padding:7px!important}.nav-link{min-height:33px;padding:5px}}
+/* Campus Companion book mark: a simple, crisp icon without a decorative sparkle. */
+.brand-mark svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
