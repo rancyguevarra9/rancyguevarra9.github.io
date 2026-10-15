@@ -45,3 +45,15 @@ body.dark{--paper:#101827;--panel:#18243a;--ink:#edf3ff;--muted:#b4c1d5;--line:#
 @media(max-width:720px){.sidebar{flex-wrap:wrap;gap:0}.brand{white-space:nowrap}.brand>span:last-child br{display:none}.sidebar nav{flex:none}.portfolio-return{width:100%;text-align:center}.top-actions{flex-wrap:wrap}.icon-button,.edit-button{min-height:38px}}
 @media(max-width:560px){.event-actions{width:calc(100% - 49px);min-width:0;margin-left:49px}.event-action{min-width:0}.tasks li{align-items:flex-start;flex-wrap:wrap}.tasks label{min-width:calc(100% - 100px)}.tasks .tag{margin-left:28px}.tasks .task-actions{width:calc(100% - 28px);margin-left:28px;flex-wrap:wrap}.tasks .task-action{flex:0 0 auto}}
 @media(max-width:390px){.event-actions{width:100%;margin-left:0}.event-action{flex:1}.brand{font-size:12px}.brand-mark{width:27px;height:27px}.sidebar nav{gap:0}.nav-link{padding:5px}}
+
+/* Mobile header: one clear brand row, then one balanced navigation row. */
+@media(max-width:720px){
+  .sidebar{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"brand back" "nav nav";align-items:center;padding:11px 16px 12px;gap:10px}
+  .brand{grid-area:brand;margin:0;gap:8px;white-space:normal}
+  .brand>span:last-child{white-space:nowrap}
+  .brand>span:last-child br{display:none}
+  .sidebar nav{grid-area:nav;display:grid;width:100%;grid-template-columns:repeat(5,1fr);gap:3px;margin:0;padding:4px;border:1px solid #ffffff18;border-radius:12px;background:#0c1f3e}
+  .nav-link{display:grid;place-items:center;min-height:35px;padding:6px;border-radius:8px}
+  .portfolio-return{grid-area:back;justify-self:end;width:auto}
+}
+@media(max-width:390px){.sidebar{padding:10px 12px 11px}.brand{font-size:12px}.portfolio-return{font-size:9px!important;padding:7px!important}.nav-link{min-height:33px;padding:5px}}
