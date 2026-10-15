@@ -1,11 +1,10 @@
-# SourceSnap Portfolio
+# Rancy Guevarra — Portfolio
 
-This is a one-page portfolio site presenting SourceSnap as the first featured project.
+My personal portfolio featuring practical frontend projects designed around everyday study and digital-work needs.
 
-Before publishing, update the following placeholders in `index.html`:
+## Featured projects
 
-- `Your Name`
-- `your.email@example.com`
-- GitHub profile link
+- **SourceSnap** — A privacy-first Chrome extension that keeps copied text connected to its original source and supports selective citation export.
+- **Campus Companion** — A responsive student dashboard for managing class schedules, tasks, study sessions, notes, and events.
 
-To preview locally, open `index.html` in a browser.
+Visit the live portfolio at [rancyguevarra9.github.io](https://rancyguevarra9.github.io/).
