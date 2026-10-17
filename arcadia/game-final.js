@@ -125,3 +125,30 @@ function startSky(){
   }loop();
 }
 
+// Memory games need readable beats even when the arcade runs at a faster pace.
+function startEcho(){
+  let sequence=[Math.floor(Math.random()*4),Math.floor(Math.random()*4),Math.floor(Math.random()*4)],phase='watch',frame=0,shown=-1,player=0,flash=-1,flashFrames=0;
+  const pads=[[285,185],[525,185],[285,335],[525,335]];
+  gameState={tap:(x,y)=>{
+    if(phase!=='play')return;
+    const hit=pads.findIndex(([px,py])=>x>=px&&x<=px+150&&y>=py&&y<=py+105);
+    if(hit<0)return;
+    flash=hit;flashFrames=12;
+    if(hit!==sequence[player]){endGame('Sequence broken');return;}
+    beep(520+hit*90,.08);player++;
+    if(player===sequence.length){setScore(score+sequence.length*25);sequence.push(Math.floor(Math.random()*4));phase='watch';frame=0;shown=-1;player=0;}
+  }};
+  function loop(){
+    if(!running)return;frame++;flashFrames=Math.max(0,flashFrames-1);
+    bg('#172149','#0d1329');
+    if(phase==='watch'){
+      const step=Math.floor(frame/72);
+      if(step<sequence.length){flash=sequence[step];if(shown!==step){shown=step;beep(430+flash*75,.09);}}
+      else if(frame>sequence.length*72+36){phase='play';flash=-1;}
+    } else if(!flashFrames) flash=-1;
+    text(phase==='watch'?'WATCH THE LIGHTS':'YOUR TURN · REPEAT THE PATTERN',480,95,19,'#dce8ff','center');
+    text(`ROUND ${sequence.length-2}`,480,505,17,'#a9c4ff','center');drawEchoPads(flash);
+    animation=requestAnimationFrame(loop);
+  }loop();
+}
+
