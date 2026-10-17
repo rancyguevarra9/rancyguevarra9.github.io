@@ -110,3 +110,18 @@ function startStack(){
   function loop(){if(!running)return;const speed=Math.min(3.05,1.7+levels*.12);if(!falling){blockX+=direction*speed;if(blockX<92||blockX+blockWidth>868){direction*=-1;blockX=Math.max(92,Math.min(868-blockWidth,blockX));}}else{blockY+=7;if(blockY+25>=stackY){const left=Math.max(blockX,stackX),right=Math.min(blockX+blockWidth,stackX+stackWidth),overlap=right-left;if(overlap<18){endGame('Stack slipped');return;}layers.push({x:left,y:stackY-25,w:overlap,color:levels%2?'#ff81bf':'#79e4dd'});stackX=left;stackWidth=overlap;stackY-=30;levels++;setScore(score+Math.round(18+overlap*.18));beep(620,.07);if(levels===11){endGame('Tower complete');return;}blockWidth=Math.max(42,stackWidth);blockX=direction>0?96:864-blockWidth;blockY=92;falling=false;direction*=-1;}}bg('#251449','#100b2a');for(let i=0;i<11;i++){ctx.fillStyle='#ffffff09';ctx.fillRect(0,90+i*34,960,1);}rounded(250,430,460,28,5,'#654aa9');layers.forEach(layer=>rounded(layer.x,layer.y,layer.w,25,5,layer.color));rounded(blockX,blockY,blockWidth,25,5,'#ffcf70');text(`LAYER ${levels+1} / 11`,40,62,18,'#f4d7ff');text(falling?'DROPPING':'SPACE TO DROP',915,62,15,falling?'#ffcf70':'#bcb0ff','right');setScore(score+.015);animation=requestAnimationFrame(loop);}loop();
 }
 
+// Faster, still controllable flight pace for Sky Skip.
+function startSky(){
+  let y=270,vy=0,world=0,gates=[],cleared=0;
+  for(let i=1;i<=10;i++)gates.push({x:570+i*355,gap:160+Math.random()*205,half:108,passed:false});
+  gameState={boost:()=>{vy=-4.45;beep(420,.035);}};
+  function loop(){
+    if(!running)return;
+    world+=2.15+Math.min(cleared*.035,.4);vy+=.13;y+=vy;
+    bg('#2062a3','#17244d');drawCloud(150-world*.06,110);drawCloud(720-world*.08,175);
+    for(const gate of gates){const x=gate.x-world;if(x>-60&&x<1020){rounded(x,0,46,gate.gap-gate.half,12,'#8b6bff');rounded(x,gate.gap+gate.half,46,540-(gate.gap+gate.half),12,'#8b6bff');if(!gate.passed&&x<175){gate.passed=true;cleared++;setScore(score+30);beep(650,.06);}}if(x<150&&x+46>125&&(y<gate.gap-gate.half+8||y>gate.gap+gate.half-8)){endGame('Gate missed');return;}}
+    ctx.save();ctx.translate(150,y);ctx.rotate(vy*.07);rounded(-25,-14,50,28,14,'#ff77bd');ctx.fillStyle='#fff3fa';ctx.beginPath();ctx.moveTo(-7,-8);ctx.lineTo(22,0);ctx.lineTo(-7,8);ctx.fill();ctx.restore();
+    if(y<18||y>522){endGame('Out of bounds');return;}if(cleared===gates.length){endGame('Sky champion');return;}animation=requestAnimationFrame(loop);
+  }loop();
+}
+
