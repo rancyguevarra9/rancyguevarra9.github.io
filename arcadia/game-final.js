@@ -9,11 +9,11 @@ function startRidge(){
     if(!running)return;
     const carX=220;
     let world=distance,rearY=road(world+carX-28),frontY=road(world+carX+28),groundAngle=Math.atan2(frontY-rearY,56),steepness=Math.sin(groundAngle);
-    if(press.up){velocity+=.062;fuel-=.028+velocity*.009;}
+    if(press.up){velocity+=.071;fuel-=.029+velocity*.009;}
     if(press.down)velocity-=.075;
     velocity-=Math.max(0,steepness)*.019;
     velocity*=.995;
-    velocity=Math.max(0,Math.min(2.48,velocity));
+    velocity=Math.max(0,Math.min(2.78,velocity));
     distance+=velocity;
     world=distance;rearY=road(world+carX-28);frontY=road(world+carX+28);groundAngle=Math.atan2(frontY-rearY,56);
     const groundY=(rearY+frontY)/2-27;
