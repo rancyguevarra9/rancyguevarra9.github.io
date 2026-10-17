@@ -136,7 +136,12 @@ function startEcho(){
     flash=hit;flashFrames=12;
     if(hit!==sequence[player]){endGame('Sequence broken');return;}
     beep(520+hit*90,.08);player++;
-    if(player===sequence.length){setScore(score+sequence.length*25);sequence.push(Math.floor(Math.random()*4));phase='watch';frame=0;shown=-1;player=0;}
+    if(player===sequence.length){
+      setScore(score+sequence.length*25);
+      const nextLength=sequence.length+1;
+      sequence=Array.from({length:nextLength},()=>Math.floor(Math.random()*4));
+      phase='watch';frame=0;shown=-1;player=0;
+    }
   }};
   function loop(){
     if(!running)return;frame++;flashFrames=Math.max(0,flashFrames-1);
