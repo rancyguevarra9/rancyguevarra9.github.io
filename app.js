@@ -20,9 +20,9 @@ document.querySelector('#dots').append(arcadiaDot);
 dots = [...document.querySelectorAll('#dots button')];
 const sliderControls = document.querySelector('.slider-controls');
 if (sliderControls && track) {
-  track.closest('.slider').after(sliderControls);
+  track.closest('.slider').append(sliderControls);
   sliderControls.id = 'project-navigation';
-  sliderControls.style.cssText = 'display:flex;justify-content:center;align-items:center;gap:14px;margin:20px 0 0;position:relative;z-index:2';
+  sliderControls.style.cssText = 'display:flex;justify-content:center;align-items:center;gap:14px;margin:0;padding:18px 0 20px;border-top:1px solid #563269;position:relative;z-index:2';
 }
 const exploreWorkButton = document.querySelector('.hero .button[href="#work"]');
 if (exploreWorkButton) {
