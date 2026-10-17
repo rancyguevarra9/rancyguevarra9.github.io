@@ -1,0 +1,8 @@
+/* Interactive game controls should feel like controls on touch screens. */
+.portfolio-link,.back-button,.control-button,.primary-button,.game-tile,.category-chip,.text-button,.switcher-list a{
+  touch-action:manipulation;
+  -webkit-user-select:none;
+  user-select:none;
+  -webkit-touch-callout:none;
+  -webkit-tap-highlight-color:transparent;
+}
