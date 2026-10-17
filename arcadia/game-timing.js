@@ -1,13 +1,12 @@
 /* Keep frame-based canvas games consistent on 30, 60, and 120 Hz displays. */
 (() => {
-  // Desktop already felt right with the browser's native frame timing.
-  // Only normalise touch devices, which can otherwise run frame-based games slower.
-  if (!window.matchMedia('(pointer: coarse)').matches && navigator.maxTouchPoints === 0) return;
+  // Keep each device class on a deliberate, stable pace.
+  const touchDevice = window.matchMedia('(pointer: coarse)').matches || navigator.maxTouchPoints > 0;
   const nativeRequest = window.requestAnimationFrame.bind(window);
   const callbacks = new Map();
   // A slightly livelier fixed simulation rate keeps every cabinet responsive,
   // while still producing the same pace on phones and desktop displays.
-  const frameMs = 1000 / 60;
+  const frameMs = 1000 / (touchDevice ? 60 : 52);
   let nextId = 1;
   let scheduled = false;
   let lastTime = 0;
