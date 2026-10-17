@@ -1,5 +1,5 @@
 const track = document.querySelector('#project-track');
-const dots = [...document.querySelectorAll('#dots button')];
+let dots;
 let activeProject = 0;
 document.querySelector('.hero .eyebrow').textContent = 'FRONTEND DEVELOPER · PORTFOLIO';
 document.querySelector('.available').innerHTML = '<i></i> Open to internship and entry-level opportunities';
@@ -10,6 +10,17 @@ if (campusDemoLink) {
   campusDemoLink.href = 'campus-companion.html';
   campusDemoLink.textContent = 'Open live demo ↗';
 }
+const arcadiaSlide = document.createElement('article');
+arcadiaSlide.className = 'slide arcadia';
+arcadiaSlide.innerHTML = `<div class="project-info"><span class="number">03</span><p class="type">BROWSER GAME HUB</p><h3>Arcadia</h3><p class="summary">An original browser arcade with eight quick-play games, responsive controls, local high scores, and purpose-built canvas gameplay.</p><div class="chips"><span>JavaScript</span><span>Canvas</span><span>Responsive UI</span></div><div class="project-links"><a class="project-button" href="arcadia/index.html">Open live demo ↗</a><a class="project-button secondary-link" href="https://github.com/rancyguevarra9/rancyguevarra9.github.io/tree/main/arcadia" target="_blank" rel="noreferrer">View source code ↗</a></div></div><div class="arcadia-ui"><header><span>✦</span><b>ARCADIA</b><i>8 GAMES</i></header><div class="arcade-road"><b>Ridge Runner</b><small>Fuel · hills · high score</small><em>PLAY →</em></div><div class="arcade-grid"><span>Shade Duel</span><span>Maze Shift</span><span>Neon Lane</span><span>+ 4 more</span></div><footer>Original browser mini games.</footer></div>`;
+track.append(arcadiaSlide);
+const arcadiaDot = document.createElement('button');
+arcadiaDot.setAttribute('aria-label', 'Show Arcadia');
+document.querySelector('#dots').append(arcadiaDot);
+dots = [...document.querySelectorAll('#dots button')];
+const arcadiaStyles = document.createElement('style');
+arcadiaStyles.textContent = `.arcadia{background:linear-gradient(135deg,#10234b,#251449)}.arcadia-ui{display:grid;gap:10px;padding:18px;border:1px solid #657fd6;border-radius:16px;background:#101b3d;box-shadow:0 0 34px #4a7fff45;color:#f4f7ff}.arcadia-ui header{display:flex;align-items:center;gap:8px}.arcadia-ui header span{display:grid;place-items:center;width:27px;height:27px;border-radius:8px;background:#5d86ff}.arcadia-ui header i{margin-left:auto;color:#b6caff;font-size:10px;font-style:normal}.arcade-road{display:grid;gap:5px;padding:16px;border-radius:11px;background:linear-gradient(135deg,#2552a1,#22356d)}.arcade-road small{color:#cae0ff;font-size:10px}.arcade-road em{color:#80eeff;font:800 10px 'DM Mono';font-style:normal}.arcade-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.arcade-grid span{padding:11px;border-radius:9px;background:#202d61;color:#d9e5ff;font-size:10px;font-weight:800}.arcadia-ui footer{color:#b7c9f5;font-size:10px}body.dark .arcadia{background:linear-gradient(135deg,#e9f1ff,#f6ecfb)}body.dark .arcadia-ui{background:#111d43;color:#f4f7ff}`;
+document.head.append(arcadiaStyles);
 const linkedInNav = document.createElement('a');
 linkedInNav.href = linkedInUrl; linkedInNav.target = '_blank'; linkedInNav.rel = 'noreferrer'; linkedInNav.textContent = 'LinkedIn ↗';
 document.querySelector('.nav nav').append(linkedInNav);
@@ -23,7 +34,7 @@ function updateTheme() { const dark = document.body.classList.contains('dark'); 
 document.body.classList.toggle('dark', localStorage.getItem('rancy-portfolio-theme') === 'dark'); updateTheme();
 themeButton.onclick = () => { document.body.classList.toggle('dark'); updateTheme(); };
 function showProject(index) {
-  activeProject = (index + 2) % 2;
+  activeProject = (index + dots.length) % dots.length;
   track.style.transform = `translateX(-${activeProject * 100}%)`;
   dots.forEach((dot, position) => dot.classList.toggle('active', position === activeProject));
 }
