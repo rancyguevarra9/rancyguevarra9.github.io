@@ -9,11 +9,11 @@ function startRidge(){
     if(!running)return;
     const carX=220;
     let world=distance,rearY=road(world+carX-28),frontY=road(world+carX+28),groundAngle=Math.atan2(frontY-rearY,56),steepness=Math.sin(groundAngle);
-    if(press.up){velocity+=.045;fuel-=.026+velocity*.009;}
+    if(press.up){velocity+=.062;fuel-=.028+velocity*.009;}
     if(press.down)velocity-=.075;
-    velocity-=Math.max(0,steepness)*.025;
+    velocity-=Math.max(0,steepness)*.019;
     velocity*=.995;
-    velocity=Math.max(0,Math.min(1.72,velocity));
+    velocity=Math.max(0,Math.min(2.48,velocity));
     distance+=velocity;
     world=distance;rearY=road(world+carX-28);frontY=road(world+carX+28);groundAngle=Math.atan2(frontY-rearY,56);
     const groundY=(rearY+frontY)/2-27;
@@ -109,3 +109,4 @@ function startStack(){
   gameState={drop:()=>{if(!falling){falling=true;beep(480,.05);}}};
   function loop(){if(!running)return;const speed=Math.min(3.05,1.7+levels*.12);if(!falling){blockX+=direction*speed;if(blockX<92||blockX+blockWidth>868){direction*=-1;blockX=Math.max(92,Math.min(868-blockWidth,blockX));}}else{blockY+=7;if(blockY+25>=stackY){const left=Math.max(blockX,stackX),right=Math.min(blockX+blockWidth,stackX+stackWidth),overlap=right-left;if(overlap<18){endGame('Stack slipped');return;}layers.push({x:left,y:stackY-25,w:overlap,color:levels%2?'#ff81bf':'#79e4dd'});stackX=left;stackWidth=overlap;stackY-=30;levels++;setScore(score+Math.round(18+overlap*.18));beep(620,.07);if(levels===11){endGame('Tower complete');return;}blockWidth=Math.max(42,stackWidth);blockX=direction>0?96:864-blockWidth;blockY=92;falling=false;direction*=-1;}}bg('#251449','#100b2a');for(let i=0;i<11;i++){ctx.fillStyle='#ffffff09';ctx.fillRect(0,90+i*34,960,1);}rounded(250,430,460,28,5,'#654aa9');layers.forEach(layer=>rounded(layer.x,layer.y,layer.w,25,5,layer.color));rounded(blockX,blockY,blockWidth,25,5,'#ffcf70');text(`LAYER ${levels+1} / 11`,40,62,18,'#f4d7ff');text(falling?'DROPPING':'SPACE TO DROP',915,62,15,falling?'#ffcf70':'#bcb0ff','right');setScore(score+.015);animation=requestAnimationFrame(loop);}loop();
 }
+
