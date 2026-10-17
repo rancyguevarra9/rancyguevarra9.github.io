@@ -1,11 +1,13 @@
 /* Keep frame-based canvas games consistent on 30, 60, and 120 Hz displays. */
 (() => {
-  // Run every device at the same deliberate arcade pace.
+  // Keep Ridge Runner at its tuned pace; give the other quick-play cabinets
+  // a livelier rhythm without changing how the car handles.
+  const selectedGame = new URLSearchParams(window.location.search).get('game');
   const nativeRequest = window.requestAnimationFrame.bind(window);
   const callbacks = new Map();
   // A slightly livelier fixed simulation rate keeps every cabinet responsive,
   // while still producing the same pace on phones and desktop displays.
-  const frameMs = 1000 / 90;
+  const frameMs = 1000 / (selectedGame === 'ridge' ? 90 : 110);
   let nextId = 1;
   let scheduled = false;
   let lastTime = 0;
