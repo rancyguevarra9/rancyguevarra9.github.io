@@ -110,6 +110,21 @@ function startStack(){
   function loop(){if(!running)return;const speed=Math.min(3.05,1.7+levels*.12);if(!falling){blockX+=direction*speed;if(blockX<92||blockX+blockWidth>868){direction*=-1;blockX=Math.max(92,Math.min(868-blockWidth,blockX));}}else{blockY+=7;if(blockY+25>=stackY){const left=Math.max(blockX,stackX),right=Math.min(blockX+blockWidth,stackX+stackWidth),overlap=right-left;if(overlap<18){endGame('Stack slipped');return;}layers.push({x:left,y:stackY-25,w:overlap,color:levels%2?'#ff81bf':'#79e4dd'});stackX=left;stackWidth=overlap;stackY-=30;levels++;setScore(score+Math.round(18+overlap*.18));beep(620,.07);if(levels===11){endGame('Tower complete');return;}blockWidth=Math.max(42,stackWidth);blockX=direction>0?96:864-blockWidth;blockY=92;falling=false;direction*=-1;}}bg('#251449','#100b2a');for(let i=0;i<11;i++){ctx.fillStyle='#ffffff09';ctx.fillRect(0,90+i*34,960,1);}rounded(250,430,460,28,5,'#654aa9');layers.forEach(layer=>rounded(layer.x,layer.y,layer.w,25,5,layer.color));rounded(blockX,blockY,blockWidth,25,5,'#ffcf70');text(`LAYER ${levels+1} / 11`,40,62,18,'#f4d7ff');text(falling?'DROPPING':'SPACE TO DROP',915,62,15,falling?'#ffcf70':'#bcb0ff','right');setScore(score+.015);animation=requestAnimationFrame(loop);}loop();
 }
 
+// Keep the live score visible inside the playable game card itself.
+(() => {
+  const shell=document.querySelector('.game-shell');
+  if(!shell||document.querySelector('.canvas-score-badge'))return;
+  const badge=document.createElement('div');
+  badge.className='canvas-score-badge';
+  badge.innerHTML='SCORE <b>0</b><small>BEST <em id="canvas-best">0</em></small>';
+  shell.append(badge);
+  const style=document.createElement('style');
+  style.textContent='.canvas-score-badge{position:absolute;z-index:3;top:16px;right:16px;display:grid;gap:3px;min-width:104px;padding:9px 11px;border:1px solid #ffffff45;border-radius:9px;background:#07132be0;color:#bcd4ff;font:900 9px ui-monospace,monospace;letter-spacing:.1em;pointer-events:none}.canvas-score-badge b{color:#ffdc76;font:900 22px Inter,Arial,sans-serif;letter-spacing:-.05em}.canvas-score-badge small{color:#a9c4f6;font-size:8px}.canvas-score-badge em{font-style:normal;color:#fff}';
+  document.head.append(style);
+  const originalSetScore=setScore;
+  setScore=value=>{originalSetScore(value);badge.querySelector('b').textContent=Math.floor(Math.max(0,value));badge.querySelector('#canvas-best').textContent=document.querySelector('#best-score')?.textContent||'0';};
+})();
+
 // Faster, still controllable flight pace for Sky Skip.
 function startSky(){
   let y=270,vy=0,world=0,gates=[],cleared=0,nextGate=2700;
