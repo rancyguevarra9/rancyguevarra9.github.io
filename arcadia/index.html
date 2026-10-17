@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Arcadia is an original browser arcade with eight quick-play mini games." />
+  <title>Arcadia — Game Library</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="preview.css" />
+  <link rel="stylesheet" href="library.css" />
+  <link rel="stylesheet" href="new-games.css" />
+</head>
+<body class="library-page">
+  <header class="site-header library-header">
+    <a class="brand" href="index.html" aria-label="Arcadia game library"><span>✦</span>ARCADIA</a>
+    <nav class="category-nav" aria-label="Game categories">
+      <button class="category-chip active" data-filter="all">All games</button>
+      <button class="category-chip" data-filter="drive">Driving</button>
+      <button class="category-chip" data-filter="fight">Action</button>
+      <button class="category-chip" data-filter="quick">Quick play</button>
+    </nav>
+    <div class="header-actions"><label class="game-search"><span>⌕</span><input id="game-search" type="search" placeholder="Search Arcadia games" aria-label="Search Arcadia games" /></label><button id="reset-scores" class="text-button">Reset scores</button></div>
+  </header>
+
+  <main class="library-shell">
+    <section id="lobby" class="game-library" aria-label="Arcadia game library">
+      <div class="library-intro"><div><p class="eyebrow">ARCADIA GAME LIBRARY</p><h1>Pick a game.<br/>Press play.</h1></div><div class="library-stats"><span><b id="games-played">0</b> rounds played</span><span><b id="high-score-count">0</b> high scores set</span><span><b id="best-total">0</b> total best</span></div></div>
+      <div id="game-results" class="tile-grid">
+        <a class="game-tile ridge" data-genre="drive quick" href="game.html?game=ridge" aria-label="Play Ridge Runner"><div class="tile-art ridge-preview"><span class="preview-sun"></span><span class="preview-hill hill-one"></span><span class="preview-hill hill-two"></span><span class="preview-fuel">F</span><span class="preview-car">▰</span></div><div class="tile-caption"><div><p>DRIVING</p><h2>Ridge Runner</h2><span>Rough road · fuel run</span></div><b>PLAY →</b></div></a>
+        <a class="game-tile duel" data-genre="fight quick" href="game.html?game=duel" aria-label="Play Shade Duel"><div class="tile-art duel-preview"><span class="preview-moon"></span><span class="fighter one">⚔</span><span class="fighter two">⚔</span><span class="slash">╱</span></div><div class="tile-caption"><div><p>ACTION</p><h2>Shade Duel</h2><span>One round · no mercy</span></div><b>PLAY →</b></div></a>
+        <a class="game-tile sky" data-genre="quick" href="game.html?game=sky" aria-label="Play Sky Skip"><div class="tile-art sky-preview"><span class="cloud cloud-a"></span><span class="cloud cloud-b"></span><span class="gate gate-one"></span><span class="gate gate-two"></span><span class="glider">◆</span></div><div class="tile-caption"><div><p>ARCADE</p><h2>Sky Skip</h2><span>18 gates · speed up</span></div><b>PLAY →</b></div></a>
+        <a class="game-tile reflex" data-genre="quick" href="game.html?game=echo" aria-label="Play Echo Sequence"><div class="tile-art reflex-preview"><span class="grid-dot d1"></span><span class="grid-dot d2"></span><span class="grid-dot d3"></span><span class="target">◆</span></div><div class="tile-caption"><div><p>MEMORY</p><h2>Echo Sequence</h2><span>Watch · remember · repeat</span></div><b>PLAY →</b></div></a>
+        <a class="game-tile orbit" data-genre="quick" href="game.html?game=orbit" aria-label="Play Orbit Keeper"><div class="tile-art orbit-art"><span>◉</span><i>◜</i></div><div class="tile-caption"><div><p>DEFENSE</p><h2>Orbit Keeper</h2><span>Protect the core</span></div><b>PLAY →</b></div></a>
+        <a class="game-tile maze" data-genre="quick" href="game.html?game=maze" aria-label="Play Maze Shift"><div class="tile-art maze-art"><span>▣</span><i>✦</i></div><div class="tile-caption"><div><p>PUZZLE</p><h2>Maze Shift</h2><span>Find the changing exit</span></div><b>PLAY →</b></div></a>
+        <a class="game-tile dash" data-genre="quick" href="game.html?game=dash" aria-label="Play Neon Lane"><div class="tile-art dash-art"><span class="dash-road"></span><i class="dash-car dash-one">▰</i><i class="dash-car dash-two">▰</i><b class="dash-car dash-player">▰</b></div><div class="tile-caption"><div><p>DODGE</p><h2>Neon Lane</h2><span>Three lanes · steady pace</span></div><b>PLAY →</b></div></a>
+        <a class="game-tile stack" data-genre="quick" href="game.html?game=stack" aria-label="Play Neon Stack"><div class="tile-art stack-art"><span></span><i></i><b></b></div><div class="tile-caption"><div><p>TIMING</p><h2>Neon Stack</h2><span>Build high · keep balance</span></div><b>PLAY →</b></div></a>
+      </div>
+      <p id="empty-results" class="empty-results" hidden>No Arcadia game matches that search.</p>
+    </section>
+  </main>
+
+  <footer class="library-footer"><span>Arcadia · original browser mini games</span><span>Scores are stored only on this device.</span></footer>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

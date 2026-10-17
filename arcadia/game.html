@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Play an original Arcadia mini game." />
+  <title>Arcadia — Play</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="preview.css" />
+  <link rel="stylesheet" href="game-page.css" />
+  <link rel="stylesheet" href="game-layout.css" />
+  <link rel="stylesheet" href="game-theme.css" />
+  <link rel="stylesheet" href="new-games.css" />
+  <link rel="stylesheet" href="bonus-games.css" />
+</head>
+<body class="game-page">
+  <div class="ambient one"></div><div class="ambient two"></div>
+  <header class="site-header wrap">
+    <a class="brand" href="index.html" aria-label="Return to Arcadia lobby"><span>✦</span>ARCADIA</a>
+    <div class="header-actions"><button id="sound-button" class="icon-button" aria-label="Toggle sound">♪</button></div>
+  </header>
+  <main class="wrap">
+    <section id="game-screen" class="game-screen">
+      <div class="game-topbar"><a id="back-to-lobby" class="back-button" href="index.html">← Arcade lobby</a><div><p id="game-kicker" class="eyebrow">01 · DRIVE</p><h1 id="game-title">Ridge Runner</h1></div><div class="score-panel"><span>SCORE <b id="score">0</b></span><span>BEST <b id="best-score">0</b></span></div></div>
+      <div class="play-layout">
+      <div class="game-main"><div class="game-shell"><canvas id="game-canvas" width="960" height="540" aria-label="Playable game area"></canvas><div id="game-overlay" class="game-overlay"><p class="eyebrow">READY?</p><h2 id="overlay-title">Ridge Runner</h2><p id="overlay-copy">Climb the hard road, collect fuel cans, and avoid boulders.</p><button id="start-button" class="primary-button">Start game <span>→</span></button><small id="key-hint">Use ↑ to accelerate and ↓ to slow down.</small></div></div>
+      <div id="controls" class="controls"></div>
+      <div class="game-tip"><span>TIP</span><p id="game-tip-copy">Fuel only drains while you accelerate. Coast when the road allows it.</p></div></div>
+      <nav class="cabinet-switcher" aria-label="Choose another game">
+        <div class="switcher-heading"><p class="eyebrow">SWITCH CABINET</p><h2>Try another challenge</h2></div>
+        <div class="switcher-list">
+          <a data-cabinet="ridge" href="game.html?game=ridge"><span class="cabinet-icon ridge-mini">⌁</span><span><b>Ridge Runner</b><small>Drive</small></span><i>→</i></a>
+          <a data-cabinet="duel" href="game.html?game=duel"><span class="cabinet-icon duel-mini">⚔</span><span><b>Shade Duel</b><small>Fight</small></span><i>→</i></a>
+          <a data-cabinet="sky" href="game.html?game=sky"><span class="cabinet-icon sky-mini">↑</span><span><b>Sky Skip</b><small>Fly</small></span><i>→</i></a>
+          <a data-cabinet="echo" href="game.html?game=echo"><span class="cabinet-icon reflex-mini">◆</span><span><b>Echo Sequence</b><small>Memory</small></span><i>→</i></a>
+          <a data-cabinet="orbit" href="game.html?game=orbit"><span class="cabinet-icon">◉</span><span><b>Orbit Keeper</b><small>Defense</small></span><i>→</i></a>
+          <a data-cabinet="maze" href="game.html?game=maze"><span class="cabinet-icon">▣</span><span><b>Maze Shift</b><small>Puzzle</small></span><i>→</i></a>
+          <a data-cabinet="dash" href="game.html?game=dash"><span class="cabinet-icon dash-mini">⇄</span><span><b>Neon Lane</b><small>Dodge</small></span><i>→</i></a>
+          <a data-cabinet="stack" href="game.html?game=stack"><span class="cabinet-icon stack-mini">▰</span><span><b>Neon Stack</b><small>Timing</small></span><i>→</i></a>
+        </div>
+      </nav>
+      </div>
+    </section>
+  </main>
+  <footer class="wrap"><span>Arcadia · original browser mini games</span><span>Scores are stored only on this device.</span></footer>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+  <script src="game-fixes.js"></script>
+  <script src="game-tuning.js"></script>
+  <script src="game-final.js"></script>
+</body>
+</html>
