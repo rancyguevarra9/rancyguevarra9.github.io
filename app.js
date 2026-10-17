@@ -29,7 +29,10 @@ if (exploreWorkButton) {
   exploreWorkButton.href = '#project-navigation';
   exploreWorkButton.addEventListener('click', event => {
     event.preventDefault();
-    sliderControls?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    if (!sliderControls) return;
+    const controlsBottom = sliderControls.getBoundingClientRect().bottom + window.scrollY;
+    const target = Math.max(0, controlsBottom - window.innerHeight + 28);
+    window.scrollTo({ top: target, behavior: 'auto' });
   });
 }
 const arcadiaStyles = document.createElement('style');
