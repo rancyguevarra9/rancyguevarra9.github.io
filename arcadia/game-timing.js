@@ -5,7 +5,7 @@
   const callbacks = new Map();
   // A slightly livelier fixed simulation rate keeps every cabinet responsive,
   // while still producing the same pace on phones and desktop displays.
-  const frameMs = 1000 / 60;
+  const frameMs = 1000 / 90;
   let nextId = 1;
   let scheduled = false;
   let lastTime = 0;
