@@ -157,3 +157,16 @@ function startEcho(){
   }loop();
 }
 
+// Endless tower: the camera shifts the completed stack down instead of ending at 11 layers.
+function startStack(){
+  let stackX=330,stackWidth=300,stackY=430,blockX=170,blockWidth=190,blockY=98,direction=1,falling=false,levels=0,layers=[];
+  gameState={drop:()=>{if(!falling){falling=true;beep(480,.05);}}};
+  function loop(){
+    if(!running)return;
+    const speed=Math.min(4.4,1.9+levels*.09);
+    if(!falling){blockX+=direction*speed;if(blockX<92||blockX+blockWidth>868){direction*=-1;blockX=Math.max(92,Math.min(868-blockWidth,blockX));}}
+    else {blockY+=8;if(blockY+25>=stackY){const left=Math.max(blockX,stackX),right=Math.min(blockX+blockWidth,stackX+stackWidth),overlap=right-left;if(overlap<18){endGame('Stack slipped');return;}layers.push({x:left,y:stackY-25,w:overlap,color:levels%2?'#ff81bf':'#79e4dd'});stackX=left;stackWidth=overlap;stackY-=30;levels++;if(stackY<155){layers.forEach(layer=>layer.y+=180);stackY+=180;}setScore(score+Math.round(18+overlap*.18));beep(620,.07);blockWidth=Math.max(42,stackWidth);blockX=direction>0?96:864-blockWidth;blockY=92;falling=false;direction*=-1;}}
+    bg('#251449','#100b2a');for(let i=0;i<11;i++){ctx.fillStyle='#ffffff09';ctx.fillRect(0,90+i*34,960,1);}rounded(250,430,460,28,5,'#654aa9');layers.forEach(layer=>rounded(layer.x,layer.y,layer.w,25,5,layer.color));rounded(blockX,blockY,blockWidth,25,5,'#ffcf70');text(`LAYER ${levels+1}`,40,62,18,'#f4d7ff');text(falling?'DROPPING':'SPACE TO DROP',915,62,15,falling?'#ffcf70':'#bcb0ff','right');setScore(score+.015);animation=requestAnimationFrame(loop);
+  }loop();
+}
+
