@@ -2,7 +2,9 @@
 (() => {
   const nativeRequest = window.requestAnimationFrame.bind(window);
   const callbacks = new Map();
-  const frameMs = 1000 / 60;
+  // A slightly livelier fixed simulation rate keeps every cabinet responsive,
+  // while still producing the same pace on phones and desktop displays.
+  const frameMs = 1000 / 70;
   let nextId = 1;
   let scheduled = false;
   let lastTime = 0;
@@ -38,3 +40,4 @@
   };
   window.cancelAnimationFrame = id => callbacks.delete(id);
 })();
+
