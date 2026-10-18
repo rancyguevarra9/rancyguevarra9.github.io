@@ -23,6 +23,34 @@ track.append(arcadiaSlide);
 const arcadiaDot = document.createElement('button');
 arcadiaDot.setAttribute('aria-label', 'Show Arcadia');
 document.querySelector('#dots').append(arcadiaDot);
+const projectFeatures = [
+  ['Save selected text with its source', 'Keep titles, links, and dates together', 'Copy organized citation details'],
+  ['Plan classes, tasks, and deadlines', 'Track focus sessions and weekly goals', 'Keep progress saved in the browser'],
+  ['Choose from eight original mini-games', 'Play with keyboard or touch controls', 'Track local scores and game progress']
+];
+[...document.querySelectorAll('.slide')].forEach((slide, index) => {
+  const info = slide.querySelector('.project-info');
+  const anchor = info.querySelector('.project-links') || info.querySelector('.project-button');
+  if (!info || !anchor || !projectFeatures[index]) return;
+  const toggle = document.createElement('button');
+  const panel = document.createElement('div');
+  const panelId = `project-features-${index + 1}`;
+  toggle.className = 'feature-toggle';
+  toggle.type = 'button';
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.setAttribute('aria-controls', panelId);
+  toggle.innerHTML = 'Key features <span aria-hidden="true">+</span>';
+  panel.className = 'feature-panel';
+  panel.id = panelId;
+  panel.innerHTML = `<p>KEY FEATURES</p><ul>${projectFeatures[index].map(feature => `<li>${feature}</li>`).join('')}</ul>`;
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    toggle.querySelector('span').textContent = open ? '+' : '−';
+    panel.classList.toggle('is-open', !open);
+  });
+  anchor.before(toggle, panel);
+});
 dots = [...document.querySelectorAll('#dots button')];
 const sliderControls = document.querySelector('.slider-controls');
 if (sliderControls && track) {
