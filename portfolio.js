@@ -1,7 +1,7 @@
 const track = document.querySelector('#project-track');
 let dots;
 let activeProject = 0;
-document.querySelector('.hero .eyebrow').textContent = 'MY DEVELOPER PORTFOLIO';
+document.querySelector('.hero .eyebrow').textContent = 'BSIT STUDENT · MY DEVELOPER PORTFOLIO';
 document.querySelector('.hero h1').innerHTML = 'From ideas to interfaces.<br/><em>Built to be used.</em>';
 document.querySelector('.hero h1 + p').textContent = 'I’m Rancy Guevarra, a BSIT student at NU Clark building responsive, user-centered web experiences that make everyday tasks easier to understand and act on.';
 document.querySelector('.available').innerHTML = '<i></i> Open to internship and entry-level web development opportunities';
