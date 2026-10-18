@@ -74,13 +74,19 @@ if (sliderControls && track) {
 const exploreWorkButton = document.querySelector('.hero .button[href="#work"]');
 if (exploreWorkButton) {
   exploreWorkButton.href = '#project-navigation';
-  exploreWorkButton.addEventListener('click', event => {
-    event.preventDefault();
+  const revealProjectNavigation = () => {
     if (!sliderControls) return;
     const controlsBottom = sliderControls.getBoundingClientRect().bottom + window.scrollY;
     const target = Math.max(0, controlsBottom - window.innerHeight + 28);
     window.scrollTo({ top: target, behavior: 'auto' });
+  };
+  exploreWorkButton.addEventListener('click', event => {
+    event.preventDefault();
+    revealProjectNavigation();
   });
+  if (window.location.hash === '#project-navigation') {
+    requestAnimationFrame(revealProjectNavigation);
+  }
 }
 const arcadiaStyles = document.createElement('style');
 arcadiaStyles.textContent = `.arcadia{background:linear-gradient(135deg,#10234b,#251449)}.arcadia-ui{display:grid;gap:10px;padding:18px;border:1px solid #657fd6;border-radius:16px;background:#101b3d;box-shadow:0 0 34px #4a7fff45;color:#f4f7ff}.arcadia-ui header{display:flex;align-items:center;gap:8px}.arcadia-ui header span{display:grid;place-items:center;width:27px;height:27px;border-radius:8px;background:#5d86ff}.arcadia-ui header i{margin-left:auto;color:#b6caff;font-size:10px;font-style:normal}.arcade-road{display:grid;gap:5px;padding:16px;border-radius:11px;background:linear-gradient(135deg,#2552a1,#22356d)}.arcade-road small{color:#cae0ff;font-size:10px}.arcade-road em{color:#80eeff;font:800 10px 'DM Mono';font-style:normal}.arcade-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.arcade-grid span{padding:11px;border-radius:9px;background:#202d61;color:#d9e5ff;font-size:10px;font-weight:800}.arcadia-ui footer{color:#b7c9f5;font-size:10px}body.dark .arcadia{background:linear-gradient(135deg,#e9f1ff,#f6ecfb)}body.dark .arcadia-ui{background:#111d43;color:#f4f7ff}`;
