@@ -3,6 +3,9 @@
 
 /* Keep the SourceSnap interface at a crisp, readable scale in the light portfolio theme. */
 .source figure { width: min(100%, 405px); justify-self: center; }
+
+/* Portfolio skills summary */
+.skills-showcase{display:grid;grid-template-columns:.72fr 1.28fr;gap:28px;align-items:start;margin-top:42px;padding:26px;border:1px solid #57316b;border-radius:18px;background:linear-gradient(135deg,#21102f,#1a0b28)}.skills-copy .eyebrow{margin-bottom:12px}.skills-copy h3{margin:0;font-size:clamp(23px,3vw,34px);line-height:1.04;letter-spacing:-.055em}.skills-copy p:last-child{margin:15px 0 0;color:var(--muted);font-size:13px;line-height:1.65}.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.skills-grid article{min-height:102px;padding:15px;border:1px solid #4e2d61;border-radius:12px;background:#29133b}.skills-grid b{display:block;color:#ff8bd5;font:10px 'DM Mono'}.skills-grid strong{display:block;margin:13px 0 5px;color:#fff;font-size:14px}.skills-grid span{display:block;color:#cbb3d7;font-size:11px;line-height:1.45}body.dark .skills-showcase{border-color:#dfcce9;background:#fff}body.dark .skills-grid article{border-color:#e4d9eb;background:#f8f4fb}body.dark .skills-grid strong{color:#241331}body.dark .skills-grid span{color:#725d80}@media(max-width:700px){.brand{font-size:16px}.nav nav{gap:9px}.skills-showcase{grid-template-columns:1fr;gap:22px;margin-top:30px;padding:20px}.skills-grid{grid-template-columns:1fr 1fr}.skills-grid article{min-height:94px;padding:13px}.skills-grid strong{font-size:13px}}
 .source figure img { image-rendering: auto; }
 body.dark .source figure { border-color: #704282; box-shadow: 0 18px 42px #3b1d4b26; }
 body.dark .source figure img { filter: contrast(1.08) saturate(1.08); }
@@ -23,3 +26,4 @@ body.dark .project-links .secondary-link { color: #4b2364; border-color: #9674aa
 body.dark .source figure { background: #eef3fb; }
 body.dark .source figure img { filter: contrast(1.42) saturate(1.18) brightness(.96); }
 body.dark .source figcaption { color: #3e2948; font-size: 11px; }
+
