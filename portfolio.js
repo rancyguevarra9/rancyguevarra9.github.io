@@ -85,7 +85,7 @@ if (exploreWorkButton) {
     revealProjectNavigation();
   });
   if (window.location.hash === '#project-navigation') {
-    window.addEventListener('load', () => setTimeout(revealProjectNavigation, 60), { once: true });
+    window.addEventListener('load', () => setTimeout(revealProjectNavigation, 300), { once: true });
   }
 }
 const arcadiaStyles = document.createElement('style');
