@@ -32,6 +32,14 @@ const projectFeatures = [
   const info = slide.querySelector('.project-info');
   const anchor = info.querySelector('.project-links') || info.querySelector('.project-button');
   if (!info || !anchor || !projectFeatures[index]) return;
+  const summary = info.querySelector('.summary');
+  const chips = info.querySelector('.chips');
+  if (summary && !summary.querySelector('.project-detail-label')) {
+    summary.insertAdjacentHTML('afterbegin', '<span class="project-detail-label">PROBLEM IT SOLVES</span>');
+  }
+  if (chips && !info.querySelector('.technical-proof-label')) {
+    chips.insertAdjacentHTML('beforebegin', '<p class="technical-proof-label">TECHNICAL PROOF</p>');
+  }
   const toggle = document.createElement('button');
   const panel = document.createElement('div');
   const panelId = `project-features-${index + 1}`;
