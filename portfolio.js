@@ -39,7 +39,7 @@ const projectFeatures = [
   toggle.type = 'button';
   toggle.setAttribute('aria-expanded', 'false');
   toggle.setAttribute('aria-controls', panelId);
-  toggle.innerHTML = 'Key features <span aria-hidden="true">+</span>';
+  toggle.innerHTML = 'View key features <span aria-hidden="true">+</span>';
   panel.className = 'feature-panel';
   panel.id = panelId;
   panel.innerHTML = `<p>KEY FEATURES</p><ul>${projectFeatures[index].map(feature => `<li>${feature}</li>`).join('')}</ul>`;
