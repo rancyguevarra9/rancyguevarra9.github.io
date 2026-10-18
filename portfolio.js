@@ -11,6 +11,11 @@ const brand = document.querySelector('.brand');
 brand.textContent = 'Rancy';
 brand.setAttribute('aria-label', 'Rancy Guevarra — home');
 const linkedInUrl = 'https://www.linkedin.com/in/rancy-guevarra-51681538a';
+const campusPreview = document.querySelector('.campus-ui');
+if (campusPreview) {
+  campusPreview.outerHTML = '<figure class="project-screenshot campus-screenshot"><img src="campus-companion-dashboard.png" alt="Campus Companion dashboard showing schedules, deadlines, tasks, and a study goal"/><figcaption>A student dashboard for planning the week in one place.</figcaption></figure>';
+}
+
 const campusDemoLink = document.querySelector('.campus .project-button');
 if (campusDemoLink) {
   campusDemoLink.href = 'campus-companion.html';
@@ -18,7 +23,7 @@ if (campusDemoLink) {
 }
 const arcadiaSlide = document.createElement('article');
 arcadiaSlide.className = 'slide arcadia';
-arcadiaSlide.innerHTML = `<div class="project-info"><span class="number">03</span><p class="type">BROWSER GAME HUB</p><h3>Arcadia</h3><p class="summary">An original browser arcade with eight quick-play games, responsive controls, local high scores, and purpose-built canvas gameplay.</p><div class="chips"><span>JavaScript</span><span>Canvas</span><span>Responsive UI</span></div><div class="project-links"><a class="project-button" href="arcadia/index.html">Open live demo ↗</a><a class="project-button secondary-link" href="https://github.com/rancyguevarra9/rancyguevarra9.github.io/tree/main/arcadia" target="_blank" rel="noreferrer">View source code ↗</a></div></div><div class="arcadia-ui"><header><span>✦</span><b>ARCADIA</b><i>8 GAMES</i></header><div class="arcade-road"><b>Ridge Runner</b><small>Fuel · hills · high score</small><em>PLAY →</em></div><div class="arcade-grid"><span>Shade Duel</span><span>Maze Shift</span><span>Neon Lane</span><span>+ 4 more</span></div><footer>Original browser mini games.</footer></div>`;
+arcadiaSlide.innerHTML = `<div class="project-info"><span class="number">03</span><p class="type">BROWSER GAME HUB</p><h3>Arcadia</h3><p class="summary">An original browser arcade with eight quick-play games, responsive controls, local high scores, and purpose-built canvas gameplay.</p><div class="chips"><span>JavaScript</span><span>Canvas</span><span>Responsive UI</span></div><div class="project-links"><a class="project-button" href="arcadia/index.html">Open live demo ↗</a><a class="project-button secondary-link" href="https://github.com/rancyguevarra9/rancyguevarra9.github.io/tree/main/arcadia" target="_blank" rel="noreferrer">View source code ↗</a></div></div><figure class="project-screenshot arcadia-screenshot"><img src="arcadia-game-library.png" alt="Arcadia game library showing eight original browser mini-games"/><figcaption>Eight quick-play browser games in one arcade library.</figcaption></figure>`;
 track.append(arcadiaSlide);
 const arcadiaDot = document.createElement('button');
 arcadiaDot.setAttribute('aria-label', 'Show Arcadia');
