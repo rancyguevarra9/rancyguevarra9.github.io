@@ -45,3 +45,21 @@ body.dark{background:radial-gradient(820px 430px at 6% -9%,#e9dbf5 0%,transparen
 /* Expandable project details keep the carousel concise while showing useful proof of functionality. */
 .feature-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;margin:18px 0 0;padding:11px 13px;border:1px solid #5e3b73;border-radius:10px;background:#21102f;color:#f8edff;font:800 12px Manrope,Arial,sans-serif;cursor:pointer;text-align:left;transition:border-color .2s ease,background .2s ease}.feature-toggle:hover{border-color:#ff8bd5;background:#2b1640}.feature-toggle span{display:grid;place-items:center;width:18px;height:18px;border:1px solid #8e5cab;border-radius:50%;color:#ff8bd5;font-size:15px;line-height:1;transition:transform .2s ease}.feature-toggle[aria-expanded="true"] span{transform:rotate(180deg);background:#5b3174;color:#fff}.feature-panel{display:none;margin:11px 0 0;padding:13px 14px;border:1px solid #59336f;border-radius:11px;background:#1c0d2a}.feature-panel.is-open{display:block;animation:featureReveal .22s ease-out}.feature-panel p{margin:0 0 8px;color:#d99af7;font:10px 'DM Mono';letter-spacing:.12em}.feature-panel ul{display:grid;gap:7px;margin:0;padding:0;list-style:none}.feature-panel li{position:relative;padding-left:14px;color:#d9c3e4;font-size:11px;line-height:1.45}.feature-panel li:before{content:'•';position:absolute;left:0;color:#ff8bd5}@keyframes featureReveal{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}body.dark .feature-toggle{color:#3d254b;background:#fff;border-color:#d8c3e3}body.dark .feature-toggle span{border-color:#b895cb;color:#8d3db0}body.dark .feature-panel{border-color:#decfe6;background:#f8f3fb}body.dark .feature-panel p{color:#8d3db0}body.dark .feature-panel li{color:#624b6e}@media(max-width:700px){.feature-toggle{margin-top:15px}.feature-panel{padding:12px}.feature-panel li{font-size:10px}}
 .feature-panel + .project-button,.feature-panel + .project-links{margin-top:14px}.feature-panel + .project-links{display:flex}.feature-panel + .project-button{display:inline-block}.project-detail-label,.technical-proof-label{display:block;color:#d99af7;font:10px 'DM Mono';letter-spacing:.12em}.project-detail-label{margin:0 0 8px}.technical-proof-label{margin:20px 0 -11px}body.dark .project-detail-label,body.dark .technical-proof-label{color:#8d3db0}@media(max-width:700px){.technical-proof-label{margin-top:17px}}
+/* Mobile project flow: details first, visual proof next, then actions. Desktop remains unchanged. */
+@media(max-width:700px){
+  #project-track .slide{display:flex;flex-direction:column;align-items:stretch;gap:0;min-height:0}
+  #project-track .slide .project-info{display:contents}
+  #project-track .slide>figure,
+  #project-track .slide>.campus-ui,
+  #project-track .slide>.arcadia-ui{order:2;width:100%;margin:26px 0 0}
+  #project-track .slide>.campus-ui{order:2!important}
+  #project-track .slide .project-info>.feature-toggle,
+  #project-track .slide .project-info>.feature-panel,
+  #project-track .slide .project-info>.project-button,
+  #project-track .slide .project-info>.project-links{order:3}
+  #project-track .slide .project-info>.feature-toggle{margin-top:22px}
+  #project-track .slide .project-info>.feature-panel{margin-top:11px}
+  #project-track .slide .project-info>.project-button,
+  #project-track .slide .project-info>.project-links{margin-top:14px}
+  #project-track .slide .project-info>.project-links{gap:13px}
+}
