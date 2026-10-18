@@ -6,7 +6,7 @@ document.querySelector('.available').innerHTML = '<i></i> Open to internship and
 document.querySelector('.contact h2').textContent = 'Let’s build something useful.';
 document.querySelector('.contact h2 + p').textContent = 'I’m open to internship and entry-level frontend opportunities. Reach out directly, or explore my work on GitHub and LinkedIn.';
 const brand = document.querySelector('.brand');
-brand.innerHTML = 'Rancy <span>Guevarra</span>';
+brand.textContent = 'Rancy';
 brand.setAttribute('aria-label', 'Rancy Guevarra — home');
 const linkedInUrl = 'https://www.linkedin.com/in/rancy-guevarra-51681538a';
 const campusDemoLink = document.querySelector('.campus .project-button');
