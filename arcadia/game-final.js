@@ -24,7 +24,7 @@ function startRidge(){
     for(let x=0;x<canvas.width;x+=7){const ground=road(x+world);ctx.fillStyle='#194d42';ctx.fillRect(x,ground,8,canvas.height-ground);ctx.fillStyle='#4a9b67';ctx.fillRect(x,ground,8,6);}
     for(const can of cans){const sx=can.x-world;if(sx>-45&&sx<1005&&!can.taken){drawFuelCan(sx,road(can.x)-42);if(Math.abs(sx-carX)<31){can.taken=true;fuel=Math.min(100,fuel+27);pickups++;beep(620,.07);}}}
     for(const rock of rocks){const sx=rock.x-world;if(sx>-35&&sx<995&&!rock.hit){drawBoulder(sx,road(rock.x)-4);if(Math.abs(sx-carX)<29){rock.hit=true;const hardHit=velocity>1.28;velocity*=hardHit?.32:.62;fuel=Math.max(0,fuel-(hardHit?10:4));beep(210,.09);}}}
-    drawHillCar(carX,carY,bodyAngle);rounded(30,29,235,17,9,'#ffffff25');rounded(30,29,Math.max(0,235*fuel/100),17,9,fuel<25?'#ff6b75':'#ffca4b');text(`FUEL ${Math.ceil(fuel)}%`,30,72,14,'#e7ecff');text(`${Math.floor(distance)}m`,760,63,16,'#fff','right');text(press.up?'GAS · MANAGE SPEED':'COAST / BRAKE · SAVE FUEL',760,88,12,press.up?'#ffdc76':'#bed0ec','right');setScore(distance*.52+pickups*18);
+    drawHillCar(carX,carY,bodyAngle);rounded(30,29,235,17,9,'#ffffff25');rounded(30,29,Math.max(0,235*fuel/100),17,9,fuel<25?'#ff6b75':'#ffca4b');text(`FUEL ${Math.ceil(fuel)}%`,30,72,14,'#e7ecff');if(canvas.clientWidth>600){text(`${Math.floor(distance)}m`,760,63,16,'#fff','right');text(press.up?'GAS · MANAGE SPEED':'COAST / BRAKE · SAVE FUEL',760,88,12,press.up?'#ffdc76':'#bed0ec','right');}setScore(distance*.52+pickups*18);
     if(fuel<=0){endGame('Out of fuel');return;}
     animation=requestAnimationFrame(loop);
   }
