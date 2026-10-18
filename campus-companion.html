@@ -6,9 +6,9 @@
     <title>Campus Companion</title>
     <link rel="stylesheet" href="campus-styles.css" />
     <style>
-      .portfolio-return { display: inline-flex; align-items: center; gap: 7px; width: fit-content; margin: 4px 11px 22px; padding: 9px 11px; border: 1px solid #ffffff2e; border-radius: 9px; color: #d9e8ff; font: 700 11px Manrope, sans-serif; text-decoration: none; }
+      .portfolio-return-links { display: grid; gap: 7px; margin: 4px 11px 22px; }\n      .portfolio-return { display: inline-flex; align-items: center; gap: 7px; width: fit-content; margin: 0; padding: 9px 11px; border: 1px solid #ffffff2e; border-radius: 9px; color: #d9e8ff; font: 700 11px Manrope, sans-serif; text-decoration: none; }
       .portfolio-return:hover { background: #29476f; color: #fff; }
-      @media (max-width: 720px) { .portfolio-return { grid-area: back; order: initial; width: auto; margin: 0; padding: 7px 8px; font-size: 10px; white-space: nowrap; } }
+      @media (max-width: 720px) { .portfolio-return-links { grid-area: back; display: flex; gap: 6px; margin: 0; } .portfolio-return { grid-area: back; order: initial; width: auto; flex: 1; margin: 0; padding: 7px 8px; font-size: 10px; white-space: nowrap; } }
     </style>
   </head>
   <body>
@@ -22,7 +22,7 @@
           <button class="nav-link" data-view="study"><span>◫</span>Study</button>
           <button class="nav-link" data-view="notes"><span>▱</span>Notes</button>
         </nav>
-        <a class="portfolio-return" href="./">← Portfolio projects</a>
+        <div class="portfolio-return-links"><a class="portfolio-return" href="./">← Back to portfolio</a><a class="portfolio-return" href="./#work">Back to projects</a></div>
         <div class="sidebar-footer"><span class="avatar small">RG</span><div><b>Rancy Guevarra</b><small>BSIT Student</small></div></div>
       </aside>
 
