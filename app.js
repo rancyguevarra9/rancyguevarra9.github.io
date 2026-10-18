@@ -1,9 +1,9 @@
 const track = document.querySelector('#project-track');
 let dots;
 let activeProject = 0;
-document.querySelector('.hero .eyebrow').textContent = 'FRONTEND DEVELOPER · PORTFOLIO';
+document.querySelector('.hero .eyebrow').textContent = 'MY FRONTEND DEVELOPER PORTFOLIO';
 document.querySelector('.hero h1').innerHTML = 'Thoughtful interfaces.<br/><em>Clearer next steps.</em>';
-document.querySelector('.hero > p').textContent = 'I’m Rancy Guevarra, a frontend developer crafting responsive, user-centered web experiences that make everyday tasks easier to understand and act on.';
+document.querySelector('.hero > p').textContent = 'Hi, I’m Rancy Guevarra. I craft responsive, user-centered web experiences that make everyday tasks easier to understand and act on.';
 document.querySelector('.available').innerHTML = '<i></i> Open to internship and entry-level opportunities';
 document.querySelector('.contact h2').textContent = 'Let’s build something useful.';
 document.querySelector('.contact h2 + p').textContent = 'I’m open to internship and entry-level frontend opportunities. Reach out directly, or explore my work on GitHub and LinkedIn.';
