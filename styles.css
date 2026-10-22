@@ -63,4 +63,3 @@ body.dark{background:radial-gradient(820px 430px at 6% -9%,#e9dbf5 0%,transparen
   #project-track .slide .project-info>.project-links{margin-top:14px}
   #project-track .slide .project-info>.project-links{gap:13px}
 }
-@media(max-width:700px){#project-track{align-items:flex-start;transition:height .28s ease}#project-track .slide{align-self:flex-start}}
