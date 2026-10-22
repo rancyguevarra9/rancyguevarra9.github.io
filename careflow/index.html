@@ -80,6 +80,15 @@
     body.dark .care-hero-welcome small, body.dark .care-hero-stats small { color: #7de2c1; }
     body.dark .care-hero-stats div { border-color: #416188; background: #142943; }
     @media (max-width: 760px) { .care-hero-ui { inset: 12px; padding: 13px; } .care-hero-welcome strong { font-size: 16px; } .hero-media .next-open { right: 12px; bottom: 12px; min-width: 158px; } }
+    /* Final hero composition: reserve a dedicated right column for availability. */
+    .hero-media { height: 270px; }
+    .care-hero-ui { padding: 18px 194px 18px 18px; }
+    .care-hero-welcome strong { max-width: 176px; }
+    .care-hero-welcome span { max-width: 175px; line-height: 1.35; }
+    .care-hero-stats { grid-template-columns: 1fr; max-width: 166px; margin-top: auto; }
+    .care-hero-stats div:nth-child(2) { display: none; }
+    .hero-media .next-open { top: 91px; right: 15px; bottom: auto; width: 166px; min-width: 0; }
+    @media (max-width: 760px) { .hero-media { height: 250px; } .care-hero-ui { padding: 15px 172px 15px 15px; } .care-hero-welcome strong { max-width: 145px; font-size: 15px; } .care-hero-welcome span { max-width: 145px; font-size: 10px; } .care-hero-stats { max-width: 138px; } .hero-media .next-open { top: 87px; right: 12px; width: 150px; } }
   </style>
 </head>
 <body>
