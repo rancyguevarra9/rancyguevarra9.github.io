@@ -57,6 +57,29 @@
     body.dark .portfolio-links .project-return { background: #124b40; border-color: #4fbaa0; color: #e2fff6; }
     body.dark .portfolio-links .back-link:hover, body.dark .portfolio-links .back-link:focus-visible { background: #21456f; border-color: #8cb9ef; }
     body.dark .portfolio-links .project-return:hover, body.dark .portfolio-links .project-return:focus-visible { background: #176453; border-color: #8de0c7; }
+    /* A real clinic-status visual replaces the generic decorative hero graphic. */
+    .hero-media { background: linear-gradient(145deg, #e6faf1, #dce9ff); }
+    .hero-media::before, .hero-media::after { display: none; }
+    .care-hero-ui { position: absolute; inset: 16px; display: grid; align-content: start; gap: 13px; padding: 17px; border: 1px solid #ffffffb5; border-radius: 14px; background: #ffffffa8; box-shadow: inset 0 1px #fff; color: #173d68; }
+    .care-hero-top { display: flex; align-items: center; gap: 8px; font-size: 16px; }
+    .care-hero-top span { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 9px; background: #28b98e; color: #fff; font-weight: 900; }
+    .care-hero-top i { margin-left: auto; color: #4d759a; font-size: 10px; font-style: normal; }
+    .care-hero-welcome { display: grid; gap: 4px; }
+    .care-hero-welcome small, .care-hero-stats small { color: #4b887a; font-size: 9px; font-weight: 900; letter-spacing: .8px; }
+    .care-hero-welcome strong { max-width: 220px; font-size: 18px; letter-spacing: -.5px; }
+    .care-hero-welcome span { color: #557694; font-size: 11px; }
+    .care-hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .care-hero-stats div { display: grid; gap: 3px; padding: 9px; border: 1px solid #c5dfea; border-radius: 10px; background: #faffff; }
+    .care-hero-stats b { font-size: 15px; }
+    .hero-media .next-open { right: 15px; bottom: 15px; min-width: 177px; padding: 12px; border: 1px solid #416188; background: #142e50; color: #f5f9ff; box-shadow: 0 10px 24px #183a6a35; }
+    .hero-media .next-open small { color: #b6cbe0; }
+    .hero-media .next-open b { font-size: 16px; }
+    .hero-media .next-open span { color: #73e0be; }
+    body.dark .care-hero-ui { border-color: #416188; background: #11243dde; color: #edf5ff; }
+    body.dark .care-hero-top i, body.dark .care-hero-welcome span { color: #b8cce0; }
+    body.dark .care-hero-welcome small, body.dark .care-hero-stats small { color: #7de2c1; }
+    body.dark .care-hero-stats div { border-color: #416188; background: #142943; }
+    @media (max-width: 760px) { .care-hero-ui { inset: 12px; padding: 13px; } .care-hero-welcome strong { font-size: 16px; } .hero-media .next-open { right: 12px; bottom: 12px; min-width: 158px; } }
   </style>
 </head>
 <body>
@@ -72,7 +95,14 @@
 
     <main>
       <section id="patient-view" class="view active">
-        <div class="hero"><div><p class="eyebrow">CAREFLOW DENTAL</p><h1>A brighter smile,<br/>on your schedule.</h1><p>Choose a time, confirm your dental appointment, and arrive knowing exactly what to expect.</p><div class="appointment-note"><span>✓</span>Appointments only — every visit gets dedicated time.</div></div><div class="hero-media" role="img" aria-label="CareFlow Dental appointment interface"><div class="next-open"><small>NEXT AVAILABLE</small><b>Today · 2:30 PM</b><span>Dental checkup</span></div></div></div>
+        <div class="hero"><div><p class="eyebrow">CAREFLOW DENTAL</p><h1>A brighter smile,<br/>on your schedule.</h1><p>Choose a time, confirm your dental appointment, and arrive knowing exactly what to expect.</p><div class="appointment-note"><span>✓</span>Appointments only — every visit gets dedicated time.</div></div><div class="hero-media" role="img" aria-label="CareFlow Dental live appointment overview">
+  <div class="care-hero-ui">
+    <div class="care-hero-top"><span>✚</span><b>CareFlow</b><i>Live today</i></div>
+    <div class="care-hero-welcome"><small>WELCOME BACK</small><strong>Your care, clearly scheduled.</strong><span>Appointments · queue updates · peace of mind</span></div>
+    <div class="care-hero-stats"><div><small>OPEN SLOTS</small><b>04</b></div><div><small>AVERAGE WAIT</small><b>18 min</b></div></div>
+  </div>
+  <div class="next-open"><small>NEXT AVAILABLE</small><b>Today · 2:30 PM</b><span>Dental checkup</span></div>
+</div></div>
         <div class="patient-grid">
           <section class="card booking-card"><div class="section-title"><div><p class="eyebrow">BOOK A VISIT</p><h2>Choose your appointment</h2></div><span class="step">APPOINTMENT ONLY</span></div>
             <form id="booking-form">
