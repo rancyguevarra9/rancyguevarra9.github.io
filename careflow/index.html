@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CareFlow Dental is a responsive appointment and queue management demo for a modern dental clinic." />
+  <title>CareFlow Dental — Appointment & Queue Management</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .brand-logo { width: 34px; height: 34px; padding: 6px; border-radius: 11px; background: linear-gradient(140deg, #2b75f5, #66d8b4); fill: #fff; stroke: #fff; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; flex: 0 0 auto; }
+    .brand em { color: #20b68b; font-size: 11px; font-style: normal; letter-spacing: .6px; text-transform: uppercase; }
+    .hero-media { position: relative; width: min(44%, 410px); min-width: 270px; height: 220px; overflow: hidden; border: 1px solid #bfd7cf; border-radius: 18px; box-shadow: 0 18px 42px #102a5724; }
+    .hero-media::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 72% 28%, #b8f0dc 0 8%, transparent 9%), radial-gradient(circle at 28% 72%, #cfe4ff 0 16%, transparent 17%), linear-gradient(135deg, #dff6ed, #e8f1ff 58%, #c5dcff); }
+    .hero-media::after { content: 'CareFlow'; position: absolute; left: 24px; top: 22px; color: #17406d; font: 900 28px Inter, sans-serif; letter-spacing: -.05em; }
+    .hero-media .next-open { position: absolute; right: 13px; bottom: 13px; min-width: 190px; padding: 14px; background: #fffffff0; backdrop-filter: blur(8px); }
+    .staff-actions { display: flex; gap: 10px; align-items: center; }
+    .secondary { border: 1px solid #bfd1e8; border-radius: 10px; padding: 13px 14px; background: #fff; color: #274b78; font: 800 13px Inter, sans-serif; cursor: pointer; }
+    body.dark .hero-media { border-color: #416188; }
+    body.dark .hero-media .next-open { background: #101f35f2; color: #eaf2ff; }
+    body.dark .hero-media .next-open b { color: #ffffff; }
+    body.dark .secondary { background: #172842; color: #eaf2ff; border-color: #3d5b80; }
+    body.dark dialog { background: #101f35; color: #edf4ff; border-color: #3d5b80; }
+    body.dark dialog input, body.dark dialog select { background: #0b1729; color: #edf4ff; border-color: #416188; }
+    body.dark .back-link { color: #d5e5ff; }
+    body.dark .queue-row { background: #101f35; border-color: #29415f; }
+    body.dark .status.done { background: #2c3a50; color: #dce8f8; }
+    body.dark .metrics article { background: #101f35; border-color: #29415f; }
+    body.dark .metrics small, body.dark .queue-summary { color: #b9cbe1; }
+    body.dark .role-switch { background: #0d1a2e; border-color: #29415f; }
+    body.dark .role-switch button { color: #bed0e8; }
+    body.dark .role-switch button.active { color: #8db7ff; background: #193457; }
+    body.dark .filter { color: #c7d8ee; border-color: #385778; }
+    body.dark .filter.active { color: #9cc0ff; background: #173868; border-color: #4a7abd; }
+    body.dark .status.waiting { background: #173e77; color: #a8caff; }
+    body.dark .status.serving { background: #12483e; color: #8be6c5; }
+    body.dark .ticket-number { background: linear-gradient(135deg, #183a67, #154e52); border: 1px solid #376a85; }
+    body.dark .ticket-number small { color: #bcd5e9; }
+    body.dark .ticket-number b { color: #ffffff; }
+    .appointment-note { display: flex; align-items: center; gap: 9px; margin-top: 18px; color: #426080; font-size: 13px; font-weight: 650; }
+    .appointment-note span { display: grid; place-items: center; width: 25px; height: 25px; border-radius: 8px; background: #e3f8f0; color: #138363; font-weight: 900; }
+    .queue-summary { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+    .staff-actions .secondary { min-height: 45px; }
+    .row-actions button { min-width: 94px; }
+    body.dark .appointment-note { color: #c2d4ea; }
+    body.dark .appointment-note span { background: #123d35; color: #76e2be; }
+    @media (max-width: 760px) { .hero-media { width: 100%; height: 190px; margin-top: 23px; } .staff-actions { width: 100%; margin-top: 18px; } .staff-actions button { flex: 1; } .queue-row > .status { display: inline-block; grid-column: 3; grid-row: 1; } }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#patient" aria-label="CareFlow Dental home"><svg class="brand-logo" viewBox="0 0 48 48" aria-hidden="true"><path d="M15 7c4 0 5.5 2 9 2s5-2 9-2c6 0 10 4.9 10 11.2 0 8.4-5.8 16.7-9.3 16.7-2.6 0-2.8-7.5-5.8-7.5s-3.2 7.5-5.8 7.5C18.6 34.9 13 26.6 13 18.2 13 11.9 17 7 23 7z"/><path d="M19.5 18.7c2.7-2.7 6.3-2.7 9 0"/></svg>CareFlow <em>Dental</em></a>
+      <nav class="role-switch" aria-label="Choose dashboard view">
+        <button class="active" data-role="patient">Patient view</button>
+        <button data-role="staff">Staff view</button>
+      </nav>
+      <div class="top-actions"><button id="theme-toggle" class="icon-button" aria-label="Toggle color theme">◐</button><a class="back-link" href="https://rancyguevarra9.github.io/">← Portfolio</a></div>
+    </header>
+
+    <main>
+      <section id="patient-view" class="view active">
+        <div class="hero"><div><p class="eyebrow">CAREFLOW DENTAL</p><h1>A brighter smile,<br/>on your schedule.</h1><p>Choose a time, confirm your dental appointment, and arrive knowing exactly what to expect.</p><div class="appointment-note"><span>✓</span>Appointments only — every visit gets dedicated time.</div></div><div class="hero-media" role="img" aria-label="CareFlow Dental appointment interface"><div class="next-open"><small>NEXT AVAILABLE</small><b>Today · 2:30 PM</b><span>Dental checkup</span></div></div></div>
+        <div class="patient-grid">
+          <section class="card booking-card"><div class="section-title"><div><p class="eyebrow">BOOK A VISIT</p><h2>Choose your appointment</h2></div><span class="step">APPOINTMENT ONLY</span></div>
+            <form id="booking-form">
+              <label>Full name<input id="patient-name" required placeholder="e.g. Rancy Guevarra" /></label>
+              <label>Dental service<select id="service" required><option value="Dental checkup">Dental checkup</option><option value="Teeth cleaning">Teeth cleaning</option><option value="Tooth pain consultation">Tooth pain consultation</option><option value="Follow-up visit">Follow-up visit</option></select></label>
+              <div class="field-row"><label>Date<input id="visit-date" type="date" required /></label><label>Time<select id="visit-time"><option>9:00 AM</option><option>10:00 AM</option><option>11:30 AM</option><option>2:30 PM</option><option>3:30 PM</option></select></label></div>
+              <button class="primary" type="submit">Confirm appointment <span>→</span></button>
+            </form>
+          </section>
+          <aside class="card queue-card"><p class="eyebrow">YOUR VISIT</p><div id="patient-empty" class="empty"><span>⌁</span><h3>No appointment yet</h3><p>Your booking details and queue number will appear here.</p></div><div id="patient-ticket" hidden><span class="status waiting">CONFIRMED</span><h2 id="ticket-name">Rancy Guevarra</h2><p id="ticket-service">Dental checkup</p><div class="ticket-number"><small>QUEUE NUMBER</small><b id="ticket-number">A-12</b></div><div class="ticket-meta"><span><small>DATE & TIME</small><b id="ticket-date">Today · 2:30 PM</b></span><span><small>ESTIMATED WAIT</small><b id="ticket-wait">18 min</b></span></div><button id="cancel-booking" class="text-button" type="button">Cancel appointment</button></div></aside>
+        </div>
+        <section class="info-strip"><article><span>01</span><div><b>Book in moments</b><p>Choose a dental service and time that works for you.</p></div></article><article><span>02</span><div><b>Know your place</b><p>See a clear queue number and wait estimate.</p></div></article><article><span>03</span><div><b>Arrive prepared</b><p>Bring your dental records if available and arrive 10 minutes early.</p></div></article></section>
+      </section>
+
+      <section id="staff-view" class="view">
+        <div class="staff-heading"><div><p class="eyebrow">FRONT DESK DASHBOARD</p><h1>Today’s appointments</h1><p>Move every scheduled visit through a calm, clear, appointment-only workflow.</p></div><div class="staff-actions"><button id="reset-demo" class="secondary">Restore sample day</button></div></div>
+        <div class="metrics"><article><span class="metric-icon blue">⌁</span><div><b id="waiting-count">0</b><small>Upcoming</small></div></article><article><span class="metric-icon mint">▶</span><div><b id="serving-count">0</b><small>In treatment</small></div></article><article><span class="metric-icon purple">✓</span><div><b id="done-count">0</b><small>Completed</small></div></article><article><span class="metric-icon amber">◷</span><div><b>18 min</b><small>Average wait</small></div></article></div>
+        <section class="card queue-table-card"><div class="table-title"><div><p class="eyebrow">SCHEDULED TODAY</p><h2>Appointment queue</h2><p class="queue-summary">Every patient below has a confirmed appointment.</p></div><div class="filters"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="waiting">Upcoming</button><button class="filter" data-filter="serving">In treatment</button><button class="filter" data-filter="done">Completed</button></div></div><div class="queue-list" id="queue-list"></div></section>
+      </section>
+    </main>
+  </div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
+
