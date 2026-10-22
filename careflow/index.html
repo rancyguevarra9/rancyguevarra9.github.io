@@ -89,6 +89,8 @@
     .care-hero-stats div:nth-child(2) { display: none; }
     .hero-media .next-open { top: 91px; right: 15px; bottom: auto; width: 166px; min-width: 0; }
     @media (max-width: 760px) { .hero-media { height: 250px; } .care-hero-ui { padding: 15px 172px 15px 15px; } .care-hero-welcome strong { max-width: 145px; font-size: 15px; } .care-hero-welcome span { max-width: 145px; font-size: 10px; } .care-hero-stats { max-width: 138px; } .hero-media .next-open { top: 87px; right: 12px; width: 150px; } }
+    .reset-status { min-height: 18px; margin: 0; color: #317562; font-size: 12px; font-weight: 750; }
+    body.dark .reset-status { color: #7de2c1; }
   </style>
 </head>
 <body>
@@ -127,14 +129,14 @@
       </section>
 
       <section id="staff-view" class="view">
-        <div class="staff-heading"><div><p class="eyebrow">FRONT DESK DASHBOARD</p><h1>Today’s appointments</h1><p>Move every scheduled visit through a calm, clear, appointment-only workflow.</p></div><div class="staff-actions"><button id="reset-demo" class="secondary">Restore sample day</button></div></div>
+        <div class="staff-heading"><div><p class="eyebrow">FRONT DESK DASHBOARD</p><h1>Today’s appointments</h1><p>Move every scheduled visit through a calm, clear, appointment-only workflow.</p></div><div class="staff-actions"><button id="reset-demo" class="secondary" type="button">Restore sample day</button><p id="reset-status" class="reset-status" aria-live="polite"></p></div></div>
         <div class="metrics"><article><span class="metric-icon blue">⌁</span><div><b id="waiting-count">0</b><small>Upcoming</small></div></article><article><span class="metric-icon mint">▶</span><div><b id="serving-count">0</b><small>In treatment</small></div></article><article><span class="metric-icon purple">✓</span><div><b id="done-count">0</b><small>Completed</small></div></article><article><span class="metric-icon amber">◷</span><div><b>18 min</b><small>Average wait</small></div></article></div>
         <section class="card queue-table-card"><div class="table-title"><div><p class="eyebrow">SCHEDULED TODAY</p><h2>Appointment queue</h2><p class="queue-summary">Every patient below has a confirmed appointment.</p></div><div class="filters"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="waiting">Upcoming</button><button class="filter" data-filter="serving">In treatment</button><button class="filter" data-filter="done">Completed</button></div></div><div class="queue-list" id="queue-list"></div></section>
       </section>
     </main>
   </div>
   <div id="toast" role="status" aria-live="polite"></div>
-  <script src="app.js"></script>
+  <script src="app.js?v=reset-feedback-1"></script>
 </body>
 </html>
 
