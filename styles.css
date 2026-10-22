@@ -95,3 +95,18 @@ html{scroll-behavior:smooth}
 .careflow .careflow-screens p span { color: #5b7891; font-size: 9px; }
 .careflow .careflow-preview figcaption { color: #456d83; font-size: 10px; }
 @media (max-width: 700px) { .careflow .careflow-screens img { height: 96px; } }
+
+
+/* Campus Companion gets its own indigo identity, distinct from SourceSnap's violet. */
+.campus { background: linear-gradient(135deg, #102852 0%, #183f70 58%, #24517d 100%) !important; }
+.campus .number { background: #286bc0; color: #eaf5ff; }
+.campus .type { color: #7ed8ff; }
+.campus .project-info h3 { color: #f2f8ff; }
+.campus .summary { color: #c5dff3; }
+.campus .technical-proof-label { color: #7ed8ff; }
+.campus .chips span { border-color: #6897c6; color: #d9ecff; background: #17385f; }
+.campus .project-button { color: #f3f9ff; border-bottom-color: #62d4ff; }
+.campus .feature-toggle { border-color: #5d95c6; background: #13355d; color: #f6fbff; }
+.campus .feature-panel { border-color: #5d95c6; background: #102d50; color: #e8f5ff; }
+.campus .project-screenshot { border-color: #6da4dc; box-shadow: 0 16px 34px #06183070; }
+.campus .project-screenshot figcaption { color: #294d70; }
