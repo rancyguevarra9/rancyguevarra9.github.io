@@ -61,8 +61,7 @@ const projectFeatures = [
     toggle.setAttribute('aria-expanded', String(!open));
     toggle.querySelector('span').textContent = open ? '+' : '−';
     panel.classList.toggle('is-open', !open);
-    requestAnimationFrame(syncMobileProjectHeight);
-  });
+    });
   anchor.before(toggle, panel);
 });
 dots = [...document.querySelectorAll('#dots button')];
@@ -72,22 +71,22 @@ if (sliderControls && track) {
   sliderControls.id = 'project-navigation';
   sliderControls.style.cssText = 'display:flex;justify-content:center;align-items:center;gap:14px;margin:0;padding:18px 0 20px;border-top:1px solid #563269;position:relative;z-index:2';
 }
-const exploreWorkButton = document.querySelector('.hero .button[href="#work"]');
-if (exploreWorkButton) {
-  exploreWorkButton.href = '#project-navigation';
-  const revealProjectNavigation = () => {
-    if (!sliderControls) return;
-    const controlsBottom = sliderControls.getBoundingClientRect().bottom + window.scrollY;
-    const target = Math.max(0, controlsBottom - window.innerHeight + 28);
-    window.scrollTo({ top: target, behavior: 'auto' });
-  };
-  exploreWorkButton.addEventListener('click', event => {
+const projectNavigationLinks = [...document.querySelectorAll('.hero .button[href="#work"], [data-project-navigation]')];
+const revealProjectNavigation = () => {
+  if (!sliderControls) return;
+  const controlsBottom = sliderControls.getBoundingClientRect().bottom + window.scrollY;
+  const target = Math.max(0, controlsBottom - window.innerHeight + 28);
+  window.scrollTo({ top: target, behavior: 'auto' });
+};
+projectNavigationLinks.forEach(link => {
+  link.href = '#project-navigation';
+  link.addEventListener('click', event => {
     event.preventDefault();
     revealProjectNavigation();
   });
-  if (window.location.hash === '#project-navigation') {
-    window.addEventListener('load', () => setTimeout(revealProjectNavigation, 300), { once: true });
-  }
+});
+if (projectNavigationLinks.length && window.location.hash === '#project-navigation') {
+  window.addEventListener('load', () => setTimeout(revealProjectNavigation, 300), { once: true });
 }
 const arcadiaStyles = document.createElement('style');
 arcadiaStyles.textContent = `.arcadia{background:linear-gradient(135deg,#10234b,#251449)}.arcadia-ui{display:grid;gap:10px;padding:18px;border:1px solid #657fd6;border-radius:16px;background:#101b3d;box-shadow:0 0 34px #4a7fff45;color:#f4f7ff}.arcadia-ui header{display:flex;align-items:center;gap:8px}.arcadia-ui header span{display:grid;place-items:center;width:27px;height:27px;border-radius:8px;background:#5d86ff}.arcadia-ui header i{margin-left:auto;color:#b6caff;font-size:10px;font-style:normal}.arcade-road{display:grid;gap:5px;padding:16px;border-radius:11px;background:linear-gradient(135deg,#2552a1,#22356d)}.arcade-road small{color:#cae0ff;font-size:10px}.arcade-road em{color:#80eeff;font:800 10px 'DM Mono';font-style:normal}.arcade-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.arcade-grid span{padding:11px;border-radius:9px;background:#202d61;color:#d9e5ff;font-size:10px;font-weight:800}.arcadia-ui footer{color:#b7c9f5;font-size:10px}body.dark .arcadia{background:linear-gradient(135deg,#e9f1ff,#f6ecfb)}body.dark .arcadia-ui{background:#111d43;color:#f4f7ff}`;
@@ -116,15 +115,6 @@ document.querySelector('.nav nav').append(themeButton);
 function updateTheme() { const dark = document.body.classList.contains('dark'); themeButton.textContent = dark ? '☀' : '◐'; localStorage.setItem('rancy-portfolio-theme', dark ? 'dark' : 'light'); }
 document.body.classList.toggle('dark', localStorage.getItem('rancy-portfolio-theme') === 'dark'); updateTheme();
 themeButton.onclick = () => { document.body.classList.toggle('dark'); updateTheme(); };
-const projectSlides = [...document.querySelectorAll('.slide')];
-function syncMobileProjectHeight() {
-  if (!window.matchMedia('(max-width: 700px)').matches) {
-    track.style.height = '';
-    return;
-  }
-  const activeSlide = projectSlides[activeProject];
-  if (activeSlide) track.style.height = `${activeSlide.offsetHeight}px`;
-}
 function showProject(index) {
   activeProject = (index + dots.length) % dots.length;
   track.style.transform = `translateX(-${activeProject * 100}%)`;
@@ -138,8 +128,4 @@ document.addEventListener('keydown', event => { if (event.key === 'ArrowLeft') s
 let startX = 0;
 track.addEventListener('pointerdown', event => { startX = event.clientX; });
 track.addEventListener('pointerup', event => { const change = event.clientX - startX; if (Math.abs(change) > 45) showProject(activeProject + (change < 0 ? 1 : -1)); });
-window.addEventListener('resize', syncMobileProjectHeight);
-window.addEventListener('load', () => setTimeout(syncMobileProjectHeight, 80), { once: true });
-projectSlides.forEach(slide => slide.querySelectorAll('img').forEach(image => image.addEventListener('load', syncMobileProjectHeight)));
-syncMobileProjectHeight();
 
