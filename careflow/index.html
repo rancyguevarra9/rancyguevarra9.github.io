@@ -49,6 +49,9 @@
     .back-link:hover, .back-link:focus-visible { transform: translateY(-2px); background: #eef6ff; box-shadow: 0 6px 15px #163a6720; outline: none; }
     .project-return { border-color: #67b9a3; background: #ecfaf5; color: #12634f; }
     @media (max-width: 760px) { .top-actions { flex-wrap: wrap; justify-content: flex-end; } .portfolio-links { width: 100%; display: grid; grid-template-columns: 1fr 1fr; } .back-link { justify-content: center; min-width: 0; padding: 0 6px; font-size: 9px; white-space: nowrap; } }
+    .theme-toggle { display: inline-flex; align-items: center; gap: 7px; min-height: 36px; padding: 0 11px; font-weight: 800; }
+    .theme-toggle span:first-child { font-size: 15px; }
+    body.dark .theme-toggle { background: #193457; border-color: #4a7abd; color: #eaf2ff; }
   </style>
 </head>
 <body>
@@ -59,7 +62,7 @@
         <button class="active" data-role="patient">Patient view</button>
         <button data-role="staff">Staff view</button>
       </nav>
-      <div class="top-actions"><button id="theme-toggle" class="icon-button" aria-label="Toggle color theme">◐</button><div class="portfolio-links"><a class="back-link" href="../">← Back to portfolio</a><a class="back-link project-return" href="../?return=projects">Back to projects</a></div></div>
+      <div class="top-actions"><button id="theme-toggle" class="icon-button theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode"><span aria-hidden="true">◐</span><span id="theme-label">Dark mode</span></button><div class="portfolio-links"><a class="back-link" href="../">← Back to portfolio</a><a class="back-link project-return" href="../?return=projects">Back to projects</a></div></div>
     </header>
 
     <main>
