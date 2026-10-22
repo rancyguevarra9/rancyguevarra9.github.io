@@ -44,6 +44,11 @@
     body.dark .appointment-note { color: #c2d4ea; }
     body.dark .appointment-note span { background: #123d35; color: #76e2be; }
     @media (max-width: 760px) { .hero-media { width: 100%; height: 190px; margin-top: 23px; } .staff-actions { width: 100%; margin-top: 18px; } .staff-actions button { flex: 1; } .queue-row > .status { display: inline-block; grid-column: 3; grid-row: 1; } }
+    .portfolio-links { display: flex; align-items: center; gap: 8px; }
+    .back-link { display: inline-flex; align-items: center; min-height: 36px; padding: 0 11px; border: 1px solid #bfd1e8; border-radius: 9px; background: #fff; color: #274b78; font: 800 11px Inter, sans-serif; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+    .back-link:hover, .back-link:focus-visible { transform: translateY(-2px); background: #eef6ff; box-shadow: 0 6px 15px #163a6720; outline: none; }
+    .project-return { border-color: #67b9a3; background: #ecfaf5; color: #12634f; }
+    @media (max-width: 760px) { .top-actions { flex-wrap: wrap; justify-content: flex-end; } .portfolio-links { width: 100%; display: grid; grid-template-columns: 1fr 1fr; } .back-link { justify-content: center; min-width: 0; padding: 0 6px; font-size: 9px; white-space: nowrap; } }
   </style>
 </head>
 <body>
@@ -54,7 +59,7 @@
         <button class="active" data-role="patient">Patient view</button>
         <button data-role="staff">Staff view</button>
       </nav>
-      <div class="top-actions"><button id="theme-toggle" class="icon-button" aria-label="Toggle color theme">◐</button><a class="back-link" href="https://rancyguevarra9.github.io/">← Portfolio</a></div>
+      <div class="top-actions"><button id="theme-toggle" class="icon-button" aria-label="Toggle color theme">◐</button><div class="portfolio-links"><a class="back-link" href="../">← Back to portfolio</a><a class="back-link project-return" href="../?return=projects">Back to projects</a></div></div>
     </header>
 
     <main>
