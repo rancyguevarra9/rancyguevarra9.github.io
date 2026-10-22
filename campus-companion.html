@@ -47,11 +47,16 @@
       }
       html { scroll-behavior: smooth; }
       @media (max-width: 720px) {
+        .sidebar {
+          grid-template-columns: 1fr;
+          grid-template-areas: "brand" "back" "nav";
+        }
         .portfolio-return-links {
           grid-area: back;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 6px;
           width: 100%;
+          box-sizing: border-box;
           margin: 0;
           padding: 6px;
         }
