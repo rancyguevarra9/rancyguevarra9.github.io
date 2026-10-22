@@ -6,9 +6,62 @@
     <title>Campus Companion</title>
     <link rel="stylesheet" href="campus-styles.css" />
     <style>
-      .portfolio-return-links { display: grid; gap: 7px; margin: 4px 11px 22px; }\n      .portfolio-return { display: inline-flex; align-items: center; gap: 7px; width: fit-content; margin: 0; padding: 9px 11px; border: 1px solid #ffffff2e; border-radius: 9px; color: #d9e8ff; font: 700 11px Manrope, sans-serif; text-decoration: none; }
-      .portfolio-return { transition: transform .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease; }\n      .portfolio-return:hover, .portfolio-return:focus-visible { background: #29476f; color: #fff; transform: translateY(-2px); box-shadow: 0 7px 16px #07152d55; }\n      .portfolio-return-links .portfolio-return:last-child { border-color: #76a9ff; background: linear-gradient(135deg, #3d7ded, #2860bc); color: #fff; }\n      html { scroll-behavior: smooth; }
-      @media (max-width: 720px) { .portfolio-return-links { grid-area: back; display: flex; gap: 6px; margin: 0; } .portfolio-return { grid-area: back; order: initial; width: auto; flex: 1; margin: 0; padding: 7px 8px; font-size: 10px; white-space: nowrap; } }
+      .portfolio-return-links {
+        display: grid;
+        gap: 8px;
+        margin: 4px 11px 22px;
+        padding: 8px;
+        border: 1px solid #ffffff24;
+        border-radius: 12px;
+        background: #0b1b37aa;
+        box-shadow: 0 8px 20px #07152d36;
+      }
+      .portfolio-return {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 36px;
+        padding: 0 10px;
+        border: 1px solid #90b7ff58;
+        border-radius: 8px;
+        background: #18345f;
+        color: #eef5ff;
+        font: 800 11px Manrope, sans-serif;
+        text-align: center;
+        text-decoration: none;
+        transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+      }
+      .portfolio-return:hover,
+      .portfolio-return:focus-visible {
+        transform: translateY(-2px);
+        border-color: #a8c8ff;
+        background: #29538c;
+        box-shadow: 0 6px 15px #07152d80;
+        outline: none;
+      }
+      .portfolio-return-links .portfolio-return:last-child {
+        border-color: #82b0ff;
+        background: linear-gradient(135deg, #3d7ded, #2860bc);
+        color: #fff;
+        box-shadow: 0 4px 12px #1e5dbd55;
+      }
+      html { scroll-behavior: smooth; }
+      @media (max-width: 720px) {
+        .portfolio-return-links {
+          grid-area: back;
+          grid-template-columns: 1fr 1fr;
+          gap: 6px;
+          width: 100%;
+          margin: 0;
+          padding: 6px;
+        }
+        .portfolio-return {
+          min-height: 34px;
+          padding: 0 6px;
+          font-size: 9px;
+          white-space: nowrap;
+        }
+      }
     </style>
   </head>
   <body>
