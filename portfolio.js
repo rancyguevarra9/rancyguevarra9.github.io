@@ -61,6 +61,7 @@ const projectFeatures = [
     toggle.setAttribute('aria-expanded', String(!open));
     toggle.querySelector('span').textContent = open ? '+' : '−';
     panel.classList.toggle('is-open', !open);
+    requestAnimationFrame(syncMobileProjectHeight);
   });
   anchor.before(toggle, panel);
 });
