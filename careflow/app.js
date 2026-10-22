@@ -43,6 +43,17 @@ themeButton.addEventListener('click', () => {
   localStorage.setItem('careflow-theme', document.body.classList.contains('dark') ? 'dark' : 'light');
   syncThemeButton();
 });
-$('#reset-demo').addEventListener('click', () => { queue = [...seed]; localStorage.removeItem(queueKey); localStorage.removeItem(bookingKey); save(); renderQueue(); $('#patient-ticket').hidden = true; $('#patient-empty').hidden = false; toast('Demo data restored.'); });
+$('#reset-demo').addEventListener('click', () => {
+  queue = seed.map(item => ({ ...item }));
+  activeFilter = 'all';
+  document.querySelectorAll('.filter').forEach(button => button.classList.toggle('active', button.dataset.filter === 'all'));
+  localStorage.removeItem(queueKey);
+  localStorage.removeItem(bookingKey);
+  save();
+  renderQueue();
+  $('#patient-ticket').hidden = true;
+  $('#patient-empty').hidden = false;
+  toast('Sample day restored — the original appointments are back.');
+});
 $('#visit-date').min = new Date().toISOString().split('T')[0]; $('#visit-date').value = new Date().toISOString().split('T')[0]; if(localStorage.getItem('careflow-theme') === 'dark') document.body.classList.add('dark'); syncThemeButton(); renderQueue(); const savedBooking = JSON.parse(localStorage.getItem(bookingKey) || 'null'); if(savedBooking){ const item = queue.find(entry => entry.id === savedBooking.id); if(item) showTicket(item, savedBooking.dateLabel, savedBooking.wait); }
 
