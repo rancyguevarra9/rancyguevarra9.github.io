@@ -64,3 +64,20 @@ body.dark{background:radial-gradient(820px 430px at 6% -9%,#e9dbf5 0%,transparen
   #project-track .slide .project-info>.project-links{gap:13px}
 }
 html{scroll-behavior:smooth}
+
+
+/* CareFlow portfolio card: match the scale and visual weight of the other projects. */
+.careflow { background: linear-gradient(135deg, #dff6ef 0%, #dceaff 100%) !important; }
+.careflow .project-info { align-self: center; }
+.careflow .project-info h3 { color: #123d68 !important; }
+.careflow .summary { color: #365d80 !important; }
+.careflow .project-button { color: #0f4f82 !important; border-bottom-color: #2aa886 !important; }
+.careflow .feature-toggle { border-color: #2c6b86 !important; background: #123d68 !important; color: #fff !important; }
+.careflow .careflow-preview { width: min(100%, 488px); min-height: 370px; padding: 22px; border: 1px solid #7fc6b1; border-radius: 18px; background: linear-gradient(145deg, #fbfffd, #ecf8ff); box-shadow: 0 20px 42px #326e7430; }
+.careflow .careflow-preview-head { font-size: 16px; }
+.careflow .careflow-ticket { padding: 22px; border-radius: 14px; }
+.careflow .careflow-ticket strong { font-size: 20px; }
+.careflow .careflow-ticket > b { font-size: 30px; }
+.careflow .careflow-queue { padding: 18px; border-radius: 13px; }
+.careflow .careflow-queue b { font-size: 16px; }
+@media (max-width: 700px) { .careflow .careflow-preview { min-height: 0; padding: 16px; } .careflow .careflow-ticket { padding: 16px; } }
