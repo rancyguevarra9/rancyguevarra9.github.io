@@ -28,8 +28,24 @@ function renderQueue(){
 document.querySelectorAll('[data-role]').forEach(button => button.addEventListener('click', () => { document.querySelectorAll('[data-role]').forEach(b => b.classList.toggle('active', b === button)); document.querySelectorAll('.view').forEach(view => view.classList.toggle('active', view.id === `${button.dataset.role}-view`)); }));
 $('.brand').addEventListener('click', event => { event.preventDefault(); document.querySelector('[data-role="patient"]').click(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
 document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => { activeFilter = button.dataset.filter; document.querySelectorAll('.filter').forEach(b => b.classList.toggle('active', b === button)); renderQueue(); }));
-$('#queue-list').addEventListener('click', e => { const button = e.target.closest('[data-action]'); if(!button) return; const item = queue.find(i => i.id === Number(button.dataset.id)); item.status = button.dataset.action === 'serve' ? 'serving' : 'done'; save(); renderQueue(); toast(button.dataset.action === 'serve' ? `${item.name}'s appointment has started.` : `${item.name}'s visit is complete.`); });
-$('#booking-form').addEventListener('submit', e => { e.preventDefault(); const name = $('#patient-name').value.trim(); const service = $('#service').value; const date = new Date($('#visit-date').value + 'T12:00:00').toLocaleDateString(undefined,{month:'short',day:'numeric'}); const time = $('#visit-time').value; const id = Math.max(...queue.map(i => i.id), 11) + 1; const item = {id,name,service,time,status:'waiting',type:'Appointment'}; const booking = {id,dateLabel:`${date} · ${time}`,wait:`${Math.max(12, queue.filter(i => i.status === 'waiting').length * 6)} min`}; queue.push(item); save(); localStorage.setItem(bookingKey, JSON.stringify(booking)); renderQueue(); showTicket(item, booking.dateLabel, booking.wait); toast('Appointment confirmed. Your queue number is ready.'); e.target.reset(); $('#visit-date').value = new Date().toISOString().split('T')[0]; });
+$('#queue-list').addEventListener('click', e => {
+  const button = e.target.closest('[data-action]');
+  if (!button) return;
+  const item = queue.find(i => i.id === Number(button.dataset.id));
+  if (!item) { renderQueue(); toast('That appointment is no longer in the queue.'); return; }
+  item.status = button.dataset.action === 'serve' ? 'serving' : 'done';
+  save();
+  renderQueue();
+  toast(button.dataset.action === 'serve' ? `${item.name}'s appointment has started.` : `${item.name}'s visit is complete.`);
+});
+$('#booking-form').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = $('#patient-name').value.trim();
+  const dateValue = $('#visit-date').value;
+  if (!name) { $('#patient-name').focus(); toast('Enter your full name to confirm an appointment.'); return; }
+  if (!dateValue) { $('#visit-date').focus(); toast('Choose an appointment date to continue.'); return; }
+  const service = $('#service').value;
+  const date = new Date(dateValue + 'T12:00:00').toLocaleDateString(undefined,{month:'short',day:'numeric'}); const time = $('#visit-time').value; const id = Math.max(...queue.map(i => i.id), 11) + 1; const item = {id,name,service,time,status:'waiting',type:'Appointment'}; const booking = {id,dateLabel:`${date} · ${time}`,wait:`${Math.max(12, queue.filter(i => i.status === 'waiting').length * 6)} min`}; queue.push(item); save(); localStorage.setItem(bookingKey, JSON.stringify(booking)); renderQueue(); showTicket(item, booking.dateLabel, booking.wait); toast('Appointment confirmed. Your queue number is ready.'); e.target.reset(); $('#visit-date').value = new Date().toISOString().split('T')[0]; });
 $('#cancel-booking').addEventListener('click', () => { const booking = JSON.parse(localStorage.getItem(bookingKey) || 'null'); if(booking){ queue = queue.filter(item => item.id !== booking.id); save(); localStorage.removeItem(bookingKey); renderQueue(); } $('#patient-ticket').hidden = true; $('#patient-empty').hidden = false; toast('Appointment cancelled and removed from the queue.'); });
 const themeButton = $('#theme-toggle');
 const syncThemeButton = () => {
