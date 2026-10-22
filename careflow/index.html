@@ -91,6 +91,18 @@
     @media (max-width: 760px) { .hero-media { height: 250px; } .care-hero-ui { padding: 15px 172px 15px 15px; } .care-hero-welcome strong { max-width: 145px; font-size: 15px; } .care-hero-welcome span { max-width: 145px; font-size: 10px; } .care-hero-stats { max-width: 138px; } .hero-media .next-open { top: 87px; right: 12px; width: 150px; } }
     .reset-status { min-height: 18px; margin: 0; color: #317562; font-size: 12px; font-weight: 750; }
     body.dark .reset-status { color: #7de2c1; }
+    /* Editorial hero refinement. */
+    .hero { position: relative; padding: 24px 0 18px; }
+    .hero::before { content: ''; position: absolute; width: 390px; height: 390px; left: -160px; top: -120px; border-radius: 50%; background: radial-gradient(circle, #2869ef18, transparent 68%); pointer-events: none; }
+    .hero-copy { position: relative; }
+    .hero h1 { max-width: 610px; font-size: clamp(44px, 4.65vw, 62px); line-height: .99; }
+    .hero h1 em { color: #47c7a3; font-style: normal; }
+    .hero-copy > p:not(.eyebrow) { max-width: 520px; font-size: 16px; }
+    .hero-trust { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; margin-top: 19px; color: #4d759a; font-size: 11px; font-weight: 800; }
+    .hero-trust i { width: 4px; height: 4px; border-radius: 50%; background: #3ec7a0; }
+    body.dark .hero h1 em { color: #73e0be; }
+    body.dark .hero-trust { color: #b5cbe1; }
+    @media (max-width: 760px) { .hero { padding-top: 8px; } .hero h1 { font-size: clamp(39px, 11vw, 52px); letter-spacing: -2px; } .hero-copy > p:not(.eyebrow) { font-size: 15px; } .hero-trust { gap: 7px; font-size: 10px; } }
   </style>
 </head>
 <body>
@@ -106,7 +118,7 @@
 
     <main>
       <section id="patient-view" class="view active">
-        <div class="hero"><div><p class="eyebrow">CAREFLOW DENTAL</p><h1>A brighter smile,<br/>on your schedule.</h1><p>Choose a time, confirm your dental appointment, and arrive knowing exactly what to expect.</p><div class="appointment-note"><span>✓</span>Appointments only — every visit gets dedicated time.</div></div><div class="hero-media" role="img" aria-label="CareFlow Dental live appointment overview">
+        <div class="hero"><div class="hero-copy"><p class="eyebrow">PATIENT-FIRST DENTAL CARE</p><h1>Care that respects<br/><em>your time.</em></h1><p>Book with confidence, see your place in the queue, and arrive knowing exactly what comes next.</p><div class="appointment-note"><span>✓</span>Appointments only — dedicated time for every visit.</div><div class="hero-trust"><span>Clear booking</span><i></i><span>Live queue updates</span><i></i><span>Less waiting</span></div></div><div class="hero-media" role="img" aria-label="CareFlow Dental live appointment overview">
   <div class="care-hero-ui">
     <div class="care-hero-top"><span>✚</span><b>CareFlow</b><i>Live today</i></div>
     <div class="care-hero-welcome"><small>WELCOME BACK</small><strong>Your care, clearly scheduled.</strong><span>Appointments · queue updates · peace of mind</span></div>
