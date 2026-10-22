@@ -115,10 +115,20 @@ document.querySelector('.nav nav').append(themeButton);
 function updateTheme() { const dark = document.body.classList.contains('dark'); themeButton.textContent = dark ? '☀' : '◐'; localStorage.setItem('rancy-portfolio-theme', dark ? 'dark' : 'light'); }
 document.body.classList.toggle('dark', localStorage.getItem('rancy-portfolio-theme') === 'dark'); updateTheme();
 themeButton.onclick = () => { document.body.classList.toggle('dark'); updateTheme(); };
+const projectSlides = [...document.querySelectorAll('.slide')];
+function syncMobileProjectHeight() {
+  if (!window.matchMedia('(max-width: 700px)').matches) {
+    track.style.height = '';
+    return;
+  }
+  const activeSlide = projectSlides[activeProject];
+  if (activeSlide) track.style.height = `${activeSlide.offsetHeight}px`;
+}
 function showProject(index) {
   activeProject = (index + dots.length) % dots.length;
   track.style.transform = `translateX(-${activeProject * 100}%)`;
   dots.forEach((dot, position) => dot.classList.toggle('active', position === activeProject));
+  requestAnimationFrame(syncMobileProjectHeight);
 }
 document.querySelector('#previous').onclick = () => showProject(activeProject - 1);
 document.querySelector('#next').onclick = () => showProject(activeProject + 1);
@@ -127,4 +137,8 @@ document.addEventListener('keydown', event => { if (event.key === 'ArrowLeft') s
 let startX = 0;
 track.addEventListener('pointerdown', event => { startX = event.clientX; });
 track.addEventListener('pointerup', event => { const change = event.clientX - startX; if (Math.abs(change) > 45) showProject(activeProject + (change < 0 ? 1 : -1)); });
+window.addEventListener('resize', syncMobileProjectHeight);
+window.addEventListener('load', () => setTimeout(syncMobileProjectHeight, 80), { once: true });
+projectSlides.forEach(slide => slide.querySelectorAll('img').forEach(image => image.addEventListener('load', syncMobileProjectHeight)));
+syncMobileProjectHeight();
 
