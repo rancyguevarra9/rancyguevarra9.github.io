@@ -103,6 +103,19 @@
     body.dark .hero h1 em { color: #73e0be; }
     body.dark .hero-trust { color: #b5cbe1; }
     @media (max-width: 760px) { .hero { padding-top: 8px; } .hero h1 { font-size: clamp(39px, 11vw, 52px); letter-spacing: -2px; } .hero-copy > p:not(.eyebrow) { font-size: 15px; } .hero-trust { gap: 7px; font-size: 10px; } }
+    /* Structured mini dashboard: each piece of clinic information has its own space. */
+    .care-hero-ui { inset: 16px; display: grid; grid-template-rows: auto 1fr auto; gap: 10px; padding: 16px; }
+    .care-hero-appointment { display: flex; align-items: center; justify-content: space-between; padding: 13px 14px; border: 1px solid #739cc3; border-radius: 13px; background: linear-gradient(135deg, #173958, #122b4b); color: #fff; }
+    .care-hero-appointment > div { display: grid; gap: 3px; }
+    .care-hero-appointment small { color: #b7cde1; font-size: 9px; font-weight: 900; letter-spacing: .8px; }
+    .care-hero-appointment strong { font-size: 17px; }
+    .care-hero-appointment span { color: #78dfbd; font-size: 11px; font-weight: 750; }
+    .care-hero-appointment > b { min-width: 52px; padding-left: 13px; border-left: 1px solid #ffffff2b; color: #eaf4ff; font-size: 20px; line-height: .82; text-align: center; }
+    .care-hero-appointment > b small { font-size: 8px; }
+    .care-hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; max-width: none; margin-top: 0; }
+    .care-hero-stats div, .care-hero-stats div:nth-child(2) { display: grid; gap: 3px; padding: 9px 11px; }
+    .hero-media .next-open { display: none; }
+    @media (max-width: 760px) { .care-hero-ui { inset: 12px; padding: 12px; gap: 8px; } .care-hero-appointment { padding: 11px; } .care-hero-appointment strong { font-size: 15px; } .care-hero-appointment > b { font-size: 18px; } }
   </style>
 </head>
 <body>
@@ -121,10 +134,9 @@
         <div class="hero"><div class="hero-copy"><p class="eyebrow">PATIENT-FIRST DENTAL CARE</p><h1>Care that respects<br/><em>your time.</em></h1><p>Book with confidence, see your place in the queue, and arrive knowing exactly what comes next.</p><div class="appointment-note"><span>✓</span>Appointments only — dedicated time for every visit.</div><div class="hero-trust"><span>Clear booking</span><i></i><span>Live queue updates</span><i></i><span>Less waiting</span></div></div><div class="hero-media" role="img" aria-label="CareFlow Dental live appointment overview">
   <div class="care-hero-ui">
     <div class="care-hero-top"><span>✚</span><b>CareFlow</b><i>Live today</i></div>
-    <div class="care-hero-welcome"><small>WELCOME BACK</small><strong>Your care, clearly scheduled.</strong><span>Appointments · queue updates · peace of mind</span></div>
+    <div class="care-hero-appointment"><div><small>NEXT AVAILABLE</small><strong>Dental checkup</strong><span>Today · 2:30 PM</span></div><b>2:30<br/><small>PM</small></b></div>
     <div class="care-hero-stats"><div><small>OPEN SLOTS</small><b>04</b></div><div><small>AVERAGE WAIT</small><b>18 min</b></div></div>
   </div>
-  <div class="next-open"><small>NEXT AVAILABLE</small><b>Today · 2:30 PM</b><span>Dental checkup</span></div>
 </div></div>
         <div class="patient-grid">
           <section class="card booking-card"><div class="section-title"><div><p class="eyebrow">BOOK A VISIT</p><h2>Choose your appointment</h2></div><span class="step">APPOINTMENT ONLY</span></div>
