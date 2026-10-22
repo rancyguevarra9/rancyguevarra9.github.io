@@ -52,6 +52,11 @@
     .theme-toggle { display: inline-flex; align-items: center; gap: 7px; min-height: 36px; padding: 0 11px; font-weight: 800; }
     .theme-toggle span:first-child { font-size: 15px; }
     body.dark .theme-toggle { background: #193457; border-color: #4a7abd; color: #eaf2ff; }
+    /* Dark-mode navigation must keep its contrast. */
+    body.dark .portfolio-links .back-link { background: #162d4f; border-color: #4b6f9e; color: #eaf3ff; }
+    body.dark .portfolio-links .project-return { background: #124b40; border-color: #4fbaa0; color: #e2fff6; }
+    body.dark .portfolio-links .back-link:hover, body.dark .portfolio-links .back-link:focus-visible { background: #21456f; border-color: #8cb9ef; }
+    body.dark .portfolio-links .project-return:hover, body.dark .portfolio-links .project-return:focus-visible { background: #176453; border-color: #8de0c7; }
   </style>
 </head>
 <body>
