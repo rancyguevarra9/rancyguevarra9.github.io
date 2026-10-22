@@ -69,6 +69,11 @@ $('#reset-demo').addEventListener('click', () => {
   renderQueue();
   $('#patient-ticket').hidden = true;
   $('#patient-empty').hidden = false;
+  const resetButton = $('#reset-demo');
+  const resetStatus = $('#reset-status');
+  resetStatus.textContent = `Restored: ${queue.length} sample appointments are ready.`;
+  resetButton.textContent = 'Restored ✓';
+  setTimeout(() => { resetButton.textContent = 'Restore sample day'; }, 1800);
   toast('Sample day restored — the original appointments are back.');
 });
 $('#visit-date').min = new Date().toISOString().split('T')[0]; $('#visit-date').value = new Date().toISOString().split('T')[0]; if(localStorage.getItem('careflow-theme') === 'dark') document.body.classList.add('dark'); syncThemeButton(); renderQueue(); const savedBooking = JSON.parse(localStorage.getItem(bookingKey) || 'null'); if(savedBooking){ const item = queue.find(entry => entry.id === savedBooking.id); if(item) showTicket(item, savedBooking.dateLabel, savedBooking.wait); }
