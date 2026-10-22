@@ -61,6 +61,7 @@ const projectFeatures = [
     toggle.setAttribute('aria-expanded', String(!open));
     toggle.querySelector('span').textContent = open ? '+' : '−';
     panel.classList.toggle('is-open', !open);
+    requestAnimationFrame(matchMobileProjectCardHeights);
     });
   anchor.before(toggle, panel);
 });
@@ -115,6 +116,16 @@ document.querySelector('.nav nav').append(themeButton);
 function updateTheme() { const dark = document.body.classList.contains('dark'); themeButton.textContent = dark ? '☀' : '◐'; localStorage.setItem('rancy-portfolio-theme', dark ? 'dark' : 'light'); }
 document.body.classList.toggle('dark', localStorage.getItem('rancy-portfolio-theme') === 'dark'); updateTheme();
 themeButton.onclick = () => { document.body.classList.toggle('dark'); updateTheme(); };
+const mobileProjectSlides = [...document.querySelectorAll('.slide')];
+function matchMobileProjectCardHeights() {
+  if (!window.matchMedia('(max-width: 700px)').matches) {
+    mobileProjectSlides.forEach(slide => { slide.style.minHeight = ''; });
+    return;
+  }
+  mobileProjectSlides.forEach(slide => { slide.style.minHeight = '0'; });
+  const tallest = Math.max(...mobileProjectSlides.map(slide => slide.scrollHeight));
+  mobileProjectSlides.forEach(slide => { slide.style.minHeight = tallest + 'px'; });
+}
 function showProject(index) {
   activeProject = (index + dots.length) % dots.length;
   track.style.transform = `translateX(-${activeProject * 100}%)`;
@@ -128,4 +139,8 @@ document.addEventListener('keydown', event => { if (event.key === 'ArrowLeft') s
 let startX = 0;
 track.addEventListener('pointerdown', event => { startX = event.clientX; });
 track.addEventListener('pointerup', event => { const change = event.clientX - startX; if (Math.abs(change) > 45) showProject(activeProject + (change < 0 ? 1 : -1)); });
+window.addEventListener('resize', matchMobileProjectCardHeights);
+window.addEventListener('load', () => setTimeout(matchMobileProjectCardHeights, 80), { once: true });
+mobileProjectSlides.forEach(slide => slide.querySelectorAll('img').forEach(image => image.addEventListener('load', matchMobileProjectCardHeights)));
+matchMobileProjectCardHeights();
 
