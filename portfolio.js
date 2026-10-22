@@ -120,18 +120,18 @@ themeButton.onclick = () => { document.body.classList.toggle('dark'); updateThem
 const mobileProjectSlides = [...document.querySelectorAll('.slide')];
 function matchMobileProjectCardHeights() {
   if (!window.matchMedia('(max-width: 700px)').matches) {
-    mobileProjectSlides.forEach(slide => { slide.style.minHeight = ''; });
+    mobileProjectSlides.forEach(slide => { slide.style.height = ''; });
     return;
   }
-  mobileProjectSlides.forEach(slide => { slide.style.minHeight = '0'; });
+  mobileProjectSlides.forEach(slide => { slide.style.height = 'auto'; });
   const tallest = Math.max(...mobileProjectSlides.map(slide => slide.scrollHeight));
-  mobileProjectSlides.forEach(slide => { slide.style.minHeight = tallest + 'px'; });
+  mobileProjectSlides.forEach(slide => { slide.style.height = tallest + 'px'; });
 }
 function showProject(index) {
   activeProject = (index + dots.length) % dots.length;
   track.style.transform = `translateX(-${activeProject * 100}%)`;
   dots.forEach((dot, position) => dot.classList.toggle('active', position === activeProject));
-  requestAnimationFrame(syncMobileProjectHeight);
+  requestAnimationFrame(matchMobileProjectCardHeights);
 }
 document.querySelector('#previous').onclick = () => showProject(activeProject - 1);
 document.querySelector('#next').onclick = () => showProject(activeProject + 1);
@@ -145,3 +145,14 @@ window.addEventListener('load', () => setTimeout(matchMobileProjectCardHeights, 
 mobileProjectSlides.forEach(slide => slide.querySelectorAll('img').forEach(image => image.addEventListener('load', matchMobileProjectCardHeights)));
 matchMobileProjectCardHeights();
 
+
+// Smoothly scroll standard in-page links; the project links retain their custom arrow-visible position.
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  if (link.matches('.hero .button[href="#project-navigation"], [data-project-navigation]')) return;
+  link.addEventListener('click', event => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (!target) return;
+    event.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
