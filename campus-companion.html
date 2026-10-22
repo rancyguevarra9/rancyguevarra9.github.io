@@ -92,6 +92,31 @@
           white-space: nowrap !important;
         }
       }
+      /* A simple stack is intentionally used here so the two return links never occupy the same grid cell. */
+      .portfolio-return-links {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 6px !important;
+        width: auto !important;
+        min-width: 154px;
+        box-sizing: border-box;
+      }
+      .portfolio-return-links .portfolio-return {
+        position: static !important;
+        grid-area: auto !important;
+        display: flex !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box;
+        justify-self: auto !important;
+      }
+      @media (max-width: 1024px) {
+        .portfolio-return-links {
+          grid-area: back !important;
+          min-width: 0;
+          width: 100% !important;
+        }
+      }
     </style>
   </head>
   <body>
