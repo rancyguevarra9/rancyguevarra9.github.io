@@ -69,6 +69,29 @@
           white-space: nowrap;
         }
       }
+      /* Keep both portfolio links visible in the compact dashboard header. */
+      @media (max-width: 1024px) {
+        .sidebar {
+          grid-template-columns: 1fr !important;
+          grid-template-areas: "brand" "back" "nav" !important;
+        }
+        .portfolio-return-links {
+          grid-area: back !important;
+          display: grid !important;
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+          width: 100% !important;
+          box-sizing: border-box !important;
+          margin: 0 !important;
+          padding: 6px !important;
+        }
+        .portfolio-return-links .portfolio-return {
+          grid-area: auto !important;
+          width: auto !important;
+          min-width: 0 !important;
+          justify-self: stretch !important;
+          white-space: nowrap !important;
+        }
+      }
     </style>
   </head>
   <body>
