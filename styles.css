@@ -81,3 +81,17 @@ html{scroll-behavior:smooth}
 .careflow .careflow-queue { padding: 18px; border-radius: 13px; }
 .careflow .careflow-queue b { font-size: 16px; }
 @media (max-width: 700px) { .careflow .careflow-preview { min-height: 0; padding: 16px; } .careflow .careflow-ticket { padding: 16px; } }
+
+
+/* CareFlow proof: show the patient and staff workflows as real product screens. */
+.careflow .careflow-preview { display: grid; gap: 11px; min-height: 0; margin: 0; padding: 15px; }
+.careflow .careflow-preview-head { font-size: 14px; }
+.careflow .careflow-preview-head i { font-size: 9px; }
+.careflow .careflow-screens { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+.careflow .careflow-screens > div { overflow: hidden; border: 1px solid #8fc4ba; border-radius: 10px; background: #f9fffd; }
+.careflow .careflow-screens img { display: block; width: 100%; height: 112px; object-fit: cover; object-position: top; }
+.careflow .careflow-screens p { display: grid; gap: 2px; margin: 0; padding: 8px; color: #214f72; }
+.careflow .careflow-screens p b { font-size: 11px; }
+.careflow .careflow-screens p span { color: #5b7891; font-size: 9px; }
+.careflow .careflow-preview figcaption { color: #456d83; font-size: 10px; }
+@media (max-width: 700px) { .careflow .careflow-screens img { height: 96px; } }
